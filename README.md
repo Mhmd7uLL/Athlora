@@ -20,13 +20,13 @@ Athlora (Athletic Lifestyle and Original Apparel) adalah toko pakaian olahraga m
 .
 ├─ public/                    # aset publik (favicon, static images)
 ├─ src/
-│  ├─ pages/
-│  │  └─ Home.tsx             # halaman beranda (banner, katalog, tombol Shop)
+│  ├─ assets                  # gambar dan aset front-end
 │  ├─ components/
 │  │  ├─ navbar/
 │  │  │  └─ Navbar.tsx        # komponen navigasi
-│  │  └─ categories/          # komponen kategori / filter produk
-│  ├─ assets/                 # gambar dan aset front-end
+│  │  └─ categories/          # komponen kategori / filter produk           
+│  ├─ pages/
+│  │  └─ Home.tsx             # halaman beranda (banner, katalog, tombol Shop)  
 │  ├─ main.tsx                # entry point aplikasi
 │  └─ App.tsx                 # root app (routing, layout)
 ├─ package.json               # skrip dan dependensi

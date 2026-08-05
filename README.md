@@ -26,9 +26,10 @@ Athlora (Athletic Lifestyle and Original Apparel) adalah toko pakaian olahraga m
 │  │  │  └─ Navbar.tsx        # komponen navigasi
 │  │  └─ categories/          # komponen kategori / filter produk           
 │  ├─ pages/
-│  │  └─ Home.tsx             # halaman beranda (banner, katalog, tombol Shop)  
-│  ├─ main.tsx                # entry point aplikasi
-│  └─ App.tsx                 # root app (routing, layout)
+│  │  └─ Home.tsx             # halaman beranda (banner, katalog, tombol Shop)
+│  ├─ App.css
+│  ├─ App.tsx                 # root app (routing, layout)
+│  └─ main.tsx                # entry point
 ├─ package.json               # skrip dan dependensi
 ├─ vite.config.ts
 └─ tsconfig*.json

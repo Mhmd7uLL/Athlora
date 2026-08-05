@@ -3,7 +3,7 @@ import "./App.css";
 import Navbar from "./components/navbar/Navbar.tsx";
 import Categories from "./components/categories/Categories.tsx";
 
-import Home from "./pages/Home.tsx"
+import Home from "./pages/Home/Home.tsx"
 
 function App() {
   return (

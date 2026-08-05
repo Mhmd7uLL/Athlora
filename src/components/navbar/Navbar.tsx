@@ -2,9 +2,7 @@ function Navbar() {
   return (
     <nav className="w-full h-30 bg-white">
       <div className="h-full grid grid-cols-3 items-center px-20">
-        <h1 className="text-2xl font-bold">
-          <span>Athlora</span><br></br> Store.
-        </h1>
+        <h1 className="text-4xl font-bold"><span className="text-blue-500">Ath</span>lora.</h1>
         <form className="flex justify-center">
           <input
             type="text"

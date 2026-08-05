@@ -1,75 +1,81 @@
-# React + TypeScript + Vite
+# Athlora
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Athlora adalah toko pakaian olahraga modern yang menjual jersey tim, training suit (tracktop & jogger), dan item fashion sport lainnya. Proyek ini adalah template front-end berbasis React + TypeScript yang menampilkan katalog produk dan antarmuka belanja sederhana sebagai basis untuk dikembangkan menjadi e‑commerce lengkap.
 
-Currently, two official plugins are available:
+## Fitur utama
+- Pengenalan produk: jersey tim, training suit (tracktop, jogger), dan fashion olahraga.
+- Halaman beranda dengan banner promosi dan pengelompokan produk (contoh: Shop by Player).
+- Komponen UI terpisah (navbar, kategori, halaman) untuk pengembangan lebih lanjut.
+- Pengaturan build dan dev standar dengan Vite + TypeScript + Tailwind CSS.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Teknologi
+- Bahasa: TypeScript
+- Framework: React
+- Build / Dev: Vite
+- Styling: Tailwind CSS
+- Routing: react-router-dom
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+## Struktur proyek (ringkasan)
+```
+.
+├─ public/                    # aset publik (favicon, static images)
+├─ src/
+│  ├─ pages/
+│  │  └─ Home.tsx             # halaman beranda (banner, katalog, tombol Shop)
+│  ├─ components/
+│  │  ├─ navbar/
+│  │  │  └─ Navbar.tsx        # komponen navigasi
+│  │  └─ categories/          # komponen kategori / filter produk
+│  ├─ assets/                 # gambar dan aset front-end
+│  ├─ main.tsx                # entry point aplikasi
+│  └─ App.tsx                 # root app (routing, layout)
+├─ package.json               # skrip dan dependensi
+├─ vite.config.ts
+└─ tsconfig*.json
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Cara menjalankan (lokal)
+Pastikan Node.js dan npm sudah terpasang. Jalankan perintah berikut dari root project:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# pasang dependensi
+npm install
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# jalankan dev server
+npm run dev
 
+# build produksi
+npm run build
+
+# preview hasil build secara lokal
+npm run preview
 ```
+
+## Tempat utama untuk dikembangkan
+- src/pages/Home.tsx — tampilan beranda, contoh layout katalog dan banner.
+- src/components/navbar/Navbar.tsx — komponen navigasi; tambahkan link ke kategori/keranjang/login.
+- src/components/categories — tempat menambahkan filter kategori (jersey, tracktop, jogger, fashion).
+- src/assets & public — taruh foto produk, banner promosi, dan ikon di sini.
+
+## Saran pengembangan fitur berikutnya
+- Model data produk + mock API (atau integrasi headless CMS / backend).
+- Halaman detail produk (deskripsi, ukuran, pilihan warna).
+- Keranjang belanja dan checkout (integrasi pembayaran).
+- Manajemen stok & panel admin.
+- Pencarian dan filter lanjutan (ukuran, harga, kategori, tim).
+- Responsif dan optimasi performa (lazy loading gambar).
+
+## Kontribusi
+1. Fork repo ini.
+2. Buat branch fitur: `git checkout -b feat/nama-fitur`
+3. Commit perubahan dan push.
+4. Buka Pull Request dengan deskripsi perubahan.
+
+Gunakan pola komponen terpisah dan TypeScript typings untuk menjaga konsistensi.
+
+## Lisensi
+Tambahkan lisensi yang sesuai (contoh: MIT) di file `LICENSE` jika proyek akan dibuka untuk publik.
+
+## Kontak
+Proyek oleh: @Mhmd7uLL  
+Untuk pertanyaan atau instruksi lebih lanjut, buat issue atau PR di repository.

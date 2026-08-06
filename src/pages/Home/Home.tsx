@@ -1,13 +1,22 @@
-import { useState } from "react";
+import { useHome } from "../../hooks/useHome";
 import mainBG from "../../assets/homeAssets/mainBG.webp";
+import DropdownP from "../../components/dropdownPlayer/DropdownP";
 
 function Home() {
-  const [active, setActive] = useState("FC");
-  const [activeBrand, setActiveBrand] = useState("Adidas");
+  const {
+    active,
+    activeBrand,
+    activeSize,
+    activeNumName,
+    setActive,
+    setActiveBrand,
+    setActiveSize,
+    setActiveNumName,
+  } = useHome();
 
   return (
     <div>
-      <div className="h-120">
+      <div className="h-120 bg-blue-950 mt-1">
         <div
           className="w-full h-120 flex justify-end items-center bg-contain bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${mainBG})` }}
@@ -17,7 +26,7 @@ function Home() {
               New<br></br>Season!
             </h1>
             <p className="mt-10 me-10 rounded-2xl">New look, same elegance</p>
-            <button className="mt-2 me-10 rounded-2xl mb-10 px-5 py-2 bg-blue-500 inset-shadow-lg rounded-lg text-white hover:cursor-pointer hover:bg-indigo-700">
+            <button className="mt-2 me-10 rounded-2xl mb-10 px-5 py-2 bg-blue-500 inset-shadow-lg border border-blue-500 rounded-lg text-white hover:cursor-pointer hover:bg-blue-950 hover:border-blue-500">
               Shop Now
             </button>
           </div>
@@ -57,7 +66,7 @@ function Home() {
               <div className="bg-gray-300 py-10 rounded-3xl gap-3 flex justify-center pt-50">
                 <div className="flex flex-col justify-center bg-white w-55 rounded-lg items-center gap-2 py-3">
                   <div className="font-bold">#10 Lamine Yamal</div>
-                  <button className="rounded-2xl px-5 py-2 bg-blue-500 inset-shadow-lg rounded-lg text-white hover:cursor-pointer hover:bg-indigo-700">
+                  <button className="rounded-2xl px-5 py-2 bg-blue-500 inset-shadow-lg rounded-lg text-white hover:cursor-pointer hover:bg-blue-950 transition duration-300">
                     Shop
                   </button>
                 </div>
@@ -65,7 +74,7 @@ function Home() {
               <div className="bg-gray-300 py-10 rounded-3xl gap-3 flex justify-center pt-50">
                 <div className="flex flex-col justify-center bg-white w-55 rounded-lg items-center gap-2 py-3">
                   <div className="font-bold">#10 Lionel Messi</div>
-                  <button className="rounded-2xl px-5 py-2 bg-blue-500 inset-shadow-lg rounded-lg text-white hover:cursor-pointer hover:bg-indigo-700">
+                  <button className="rounded-2xl px-5 py-2 bg-blue-500 inset-shadow-lg rounded-lg text-white hover:cursor-pointer hover:bg-blue-950 transition duration-300">
                     Shop
                   </button>
                 </div>
@@ -73,7 +82,7 @@ function Home() {
               <div className="bg-gray-300 py-10 rounded-3xl gap-3 flex justify-center pt-50">
                 <div className="flex flex-col justify-center bg-white w-55 rounded-lg items-center gap-2 py-3">
                   <div className="font-bold">#9 Robert Lewandowski</div>
-                  <button className="rounded-2xl px-5 py-2 bg-blue-500 inset-shadow-lg rounded-lg text-white hover:cursor-pointer hover:bg-indigo-700">
+                  <button className="rounded-2xl px-5 py-2 bg-blue-500 inset-shadow-lg rounded-lg text-white hover:cursor-pointer hover:bg-blue-950 transition duration-300">
                     Shop
                   </button>
                 </div>
@@ -81,7 +90,7 @@ function Home() {
               <div className="bg-gray-300 py-10 rounded-3xl gap-3 flex justify-center pt-50">
                 <div className="flex flex-col justify-center bg-white w-55 rounded-lg items-center gap-2 py-3">
                   <div className="font-bold">#10 Kylian Mbappe</div>
-                  <button className="rounded-2xl px-5 py-2 bg-blue-500 inset-shadow-lg rounded-lg text-white hover:cursor-pointer hover:bg-indigo-700">
+                  <button className="rounded-2xl px-5 py-2 bg-blue-500 inset-shadow-lg rounded-lg text-white hover:cursor-pointer hover:bg-blue-950 transition duration-300">
                     Shop
                   </button>
                 </div>
@@ -89,7 +98,7 @@ function Home() {
               <div className="bg-gray-300 py-10 rounded-3xl gap-3 flex justify-center pt-50">
                 <div className="flex flex-col justify-center bg-white w-55 rounded-lg items-center gap-2 py-3">
                   <div className="font-bold">#7 Vinicius Junior</div>
-                  <button className="rounded-2xl px-5 py-2 bg-blue-500 inset-shadow-lg rounded-lg text-white hover:cursor-pointer hover:bg-indigo-700">
+                  <button className="rounded-2xl px-5 py-2 bg-blue-500 inset-shadow-lg rounded-lg text-white hover:cursor-pointer hover:bg-blue-950 transition duration-300">
                     Shop
                   </button>
                 </div>
@@ -101,7 +110,7 @@ function Home() {
               <div className="bg-gray-300 py-10 rounded-3xl gap-3 flex justify-center pt-50">
                 <div className="flex flex-col justify-center bg-white w-55 rounded-lg items-center gap-2 py-3">
                   <div className="font-bold">#11 Michael Olise</div>
-                  <button className="rounded-2xl px-5 py-2 bg-blue-500 inset-shadow-lg rounded-lg text-white hover:cursor-pointer hover:bg-indigo-700">
+                  <button className="rounded-2xl px-5 py-2 bg-blue-500 inset-shadow-lg rounded-lg text-white hover:cursor-pointer hover:bg-blue-950 transition duration-300">
                     Shop
                   </button>
                 </div>
@@ -109,7 +118,7 @@ function Home() {
               <div className="bg-gray-300 py-10 rounded-3xl gap-3 flex justify-center pt-50">
                 <div className="flex flex-col justify-center bg-white w-55 rounded-lg items-center gap-2 py-3">
                   <div className="font-bold">#10 Lionel Messi</div>
-                  <button className="rounded-2xl px-5 py-2 bg-blue-500 inset-shadow-lg rounded-lg text-white hover:cursor-pointer hover:bg-indigo-700">
+                  <button className="rounded-2xl px-5 py-2 bg-blue-500 inset-shadow-lg rounded-lg text-white hover:cursor-pointer hover:bg-blue-950 transition duration-300">
                     Shop
                   </button>
                 </div>
@@ -117,7 +126,7 @@ function Home() {
               <div className="bg-gray-300 py-10 rounded-3xl gap-3 flex justify-center pt-50">
                 <div className="flex flex-col justify-center bg-white w-55 rounded-lg items-center gap-2 py-3">
                   <div className="font-bold">#10 Kylian Mbappe</div>
-                  <button className="rounded-2xl px-5 py-2 bg-blue-500 inset-shadow-lg rounded-lg text-white hover:cursor-pointer hover:bg-indigo-700">
+                  <button className="rounded-2xl px-5 py-2 bg-blue-500 inset-shadow-lg rounded-lg text-white hover:cursor-pointer hover:bg-blue-950 transition duration-300">
                     Shop
                   </button>
                 </div>
@@ -125,7 +134,7 @@ function Home() {
               <div className="bg-gray-300 py-10 rounded-3xl gap-3 flex justify-center pt-50">
                 <div className="flex flex-col justify-center bg-white w-55 rounded-lg items-center gap-2 py-3">
                   <div className="font-bold">#19 Lamine Yamal</div>
-                  <button className="rounded-2xl px-5 py-2 bg-blue-500 inset-shadow-lg rounded-lg text-white hover:cursor-pointer hover:bg-indigo-700">
+                  <button className="rounded-2xl px-5 py-2 bg-blue-500 inset-shadow-lg rounded-lg text-white hover:cursor-pointer hover:bg-blue-950 transition duration-300">
                     Shop
                   </button>
                 </div>
@@ -133,7 +142,7 @@ function Home() {
               <div className="bg-gray-300 py-10 rounded-3xl gap-3 flex justify-center pt-50">
                 <div className="flex flex-col justify-center bg-white w-55 rounded-lg items-center gap-2 py-3">
                   <div className="font-bold">#5 Jude Bellingham</div>
-                  <button className="rounded-2xl px-5 py-2 bg-blue-500 inset-shadow-lg rounded-lg text-white hover:cursor-pointer hover:bg-indigo-700">
+                  <button className="rounded-2xl px-5 py-2 bg-blue-500 inset-shadow-lg rounded-lg text-white hover:cursor-pointer hover:bg-blue-950 transition duration-300">
                     Shop
                   </button>
                 </div>
@@ -203,14 +212,14 @@ function Home() {
       </div>
 
       <div className="flex flex-row gap-3 justify-center">
-        <div className="bg-red-50 w-150 h-180">
+        <div className="bg-white w-150 h-180">
           <div></div>
           <div className="flex h-full justify-center items-end gap-10">
-            <div className="bg-blue-500 w-20 h-20 gap-3 rounded-xl">ha</div>
-            <div className="bg-blue-500 w-20 h-20 gap-3 rounded-xl">ha</div>
-            <div className="bg-blue-500 w-20 h-20 gap-3 rounded-xl">ha</div>
-            <div className="bg-blue-500 w-20 h-20 gap-3 rounded-xl">ha</div>
-            <div className="bg-blue-500 w-20 h-20 gap-3 rounded-xl">ha</div>
+            <div className="bg-blue-500 w-30 h-22 gap-3 rounded-xl"></div>
+            <div className="bg-blue-500 w-30 h-22 gap-3 rounded-xl"></div>
+            <div className="bg-blue-500 w-30 h-22 gap-3 rounded-xl"></div>
+            <div className="bg-blue-500 w-30 h-22 gap-3 rounded-xl"></div>
+            <div className="bg-blue-500 w-30 h-22 gap-3 rounded-xl"></div>
           </div>
         </div>
 
@@ -230,21 +239,46 @@ function Home() {
               <a href="">Size Guide</a>
             </div>
             <div className="flex gap-3">
-              <button className="flex justify-center items-center bg-white w-20 h-10 rounded rounded-4xl border border-gray-300 hover:border-blue-500 hover:bg-blue-100">
-                XS
-              </button>
-              <button className="flex justify-center items-center bg-white w-20 h-10 rounded rounded-4xl border border-gray-300 hover:border-blue-500 hover:bg-blue-100">
-                S
-              </button>
-              <button className="flex justify-center items-center bg-white w-20 h-10 rounded rounded-4xl border border-gray-300 hover:border-blue-500 hover:bg-blue-100">
-                M
-              </button>
-              <button className="flex justify-center items-center bg-white w-20 h-10 rounded rounded-4xl border border-gray-300 hover:border-blue-500 hover:bg-blue-100">
-                L
-              </button>
-              <button className="flex justify-center items-center bg-white w-20 h-10 rounded rounded-4xl border border-gray-300 hover:border-blue-500 hover:bg-blue-100">
-                XL
-              </button>
+              <button
+                onClick={() => setActiveSize("XS")}
+                className={`relative z-10 rounded-2xl h-10 rounded-full border w-20 transition duration-300 hover:cursor-pointer ${
+                  activeSize === "XS"
+                    ? "bg-blue-100 text-blue-500 border-blue-500 hover:bg-white"
+                    : "text-gray-500 border-gray-200 hover:bg-gray-200"
+                }`}
+              >XS</button>
+              <button
+                onClick={() => setActiveSize("S")}
+                className={`relative z-10 rounded-2xl h-10 rounded-full border w-20 transition duration-300 hover:cursor-pointer ${
+                  activeSize === "S"
+                    ? "bg-blue-100 text-blue-500 border-blue-500 hover:bg-white"
+                    : "text-gray-500 border-gray-200 hover:bg-gray-200"
+                }`}
+              >S</button>
+              <button
+                onClick={() => setActiveSize("M")}
+                className={`relative z-10 rounded-2xl h-10 rounded-full border w-20 transition duration-300 hover:cursor-pointer ${
+                  activeSize === "M"
+                    ? "bg-blue-100 text-blue-500 border-blue-500 hover:bg-white"
+                    : "text-gray-500 border-gray-200 hover:bg-gray-200"
+                }`}
+              >M</button>
+              <button
+                onClick={() => setActiveSize("L")}
+                className={`relative z-10 rounded-2xl h-10 rounded-full border w-20 transition duration-300 hover:cursor-pointer ${
+                  activeSize === "L"
+                    ? "bg-blue-100 text-blue-500 border-blue-500 hover:bg-white"
+                    : "text-gray-500 border-gray-200 hover:bg-gray-200"
+                }`}
+              >L</button>
+              <button
+                onClick={() => setActiveSize("XL")}
+                className={`relative z-10 rounded-2xl h-10 rounded-full border w-20 transition duration-300 hover:cursor-pointer ${
+                  activeSize === "XL"
+                    ? "bg-blue-100 text-blue-500 border-blue-500 hover:bg-white"
+                    : "text-gray-500 border-gray-200 hover:bg-gray-200"
+                }`}
+              >XL</button>
             </div>
           </div>
 
@@ -253,21 +287,50 @@ function Home() {
           <div className="font-medium">
             <h3 className="text-md mb-2">Name & Number</h3>
             <div className="flex gap-3">
-              <button className="flex justify-center items-center bg-white w-20 h-10 rounded rounded-4xl border border-gray-300 hover:border-blue-500 hover:bg-blue-100">
-                None
-              </button>
-              <button className="flex justify-center items-center bg-white w-20 h-10 rounded rounded-4xl border border-gray-300 hover:border-blue-500 hover:bg-blue-100">
-                Player
-              </button>
-              <button className="flex justify-center items-center bg-white w-20 h-10 rounded rounded-4xl border border-gray-300 hover:border-blue-500 hover:bg-blue-100">
-                Custom
-              </button>
+              <button
+                onClick={() => setActiveNumName("None")}
+                className={`relative z-10 rounded-2xl h-10 rounded-full border w-20 transition duration-300 hover:cursor-pointer ${
+                  activeNumName === "None"
+                    ? "bg-blue-100 text-blue-500 border-blue-500 hover:bg-white"
+                    : "text-gray-500 border-gray-200 hover:bg-gray-200"
+                }`}
+              >None</button>
+              <button
+                onClick={() => setActiveNumName("Player")}
+                className={`relative z-10 rounded-2xl h-10 rounded-full border w-35 transition duration-300 hover:cursor-pointer ${
+                  activeNumName === "Player"
+                    ? "bg-blue-100 text-blue-500 border-blue-500 hover:bg-white"
+                    : "text-gray-500 border-gray-200 hover:bg-gray-200"
+                }`}
+              >Select Player</button>
+              <button
+                onClick={() => setActiveNumName("Custom")}
+                className={`relative z-10 rounded-2xl h-10 rounded-full border w-25 transition duration-300 hover:cursor-pointer ${
+                  activeNumName === "Custom"
+                    ? "bg-blue-100 text-blue-500 border-blue-500 hover:bg-white"
+                    : "text-gray-500 border-gray-200 hover:bg-gray-200"
+                }`}
+              >Custom</button>
             </div>
           </div>
+          
+          <div>
+            {activeNumName === "Player" && (
+              <DropdownP />
+            )}
+            {activeNumName === "Custom" && (
+              <div>as2u</div>
+            )}
+          </div>
 
-          <div className="flex flex-col h-full font-medium">
-            <button className="flex justify-center items-center mt-auto bg-blue-500 text-white h-15 w-full rounded-2xl hover:cursor-pointer">Add to cart</button>
-            <p>Lorem Ipsum dolor sit amet</p>
+          <div className="flex flex-col mt-auto font-medium">
+            <div className="flex justify-between text-xl">
+              <h1>Total</h1>
+              <h1>$ 250</h1>
+            </div>
+            <button className="flex justify-center items-center mt-5 bg-blue-500 text-white h-15 w-full rounded-2xl transition duration-300 hover:cursor-pointer hover:bg-blue-950">
+              Add to cart
+            </button>
           </div>
         </div>
       </div>

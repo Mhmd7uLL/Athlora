@@ -3,7 +3,7 @@
 Athlora (Athletic Lifestyle and Original Apparel) adalah toko pakaian olahraga modern yang menjual jersey tim, training suit (tracktop & jogger), dan item fashion sport lainnya. Proyek ini adalah template front-end berbasis React + TypeScript yang menampilkan katalog produk dan antarmuka belanja sederhana sebagai basis untuk dikembangkan menjadi e‑commerce lengkap.
 
 ## Fitur utama
-- Pengenalan produk: jersey tim, training suit (tracktop, jogger), dan fashion olahraga.
+- Pengenalan produk: jersey tim, training suit (tracktop, jogger), dan fashion olahraga lainnya.
 - Halaman beranda dengan banner promosi dan pengelompokan produk (contoh: Shop by Player).
 - Komponen UI terpisah (navbar, kategori, halaman) untuk pengembangan lebih lanjut.
 - Pengaturan build dan dev standar dengan Vite + TypeScript + Tailwind CSS.
@@ -22,14 +22,20 @@ Athlora (Athletic Lifestyle and Original Apparel) adalah toko pakaian olahraga m
 ├─ src/
 │  ├─ assets                  # gambar dan aset front-end
 │  ├─ components/
-│  │  ├─ navbar/
-│  │  │  └─ Navbar.tsx        # komponen navigasi
-│  │  └─ categories/          # komponen kategori / filter produk           
-│  ├─ pages/
-│  │  └─ Home.tsx             # halaman beranda (banner, katalog, tombol Shop)
+│  │  ├─ categories/          # komponen kategori / filter produk
+│  │  ├─ dropdownPlayer/      # dropdown menu untuk pemilihan nama
+│  │  ├─ footer/              # informasi footer untuk seluruh halaman
+│  │  └─ navbar/              # komponen navigasi
+│  │        
+│  ├─ pages/                  # halaman untuk web (Home, Cart, Products, dsb)
+│  │  ├─ Cart/
+│  │  ├─ Home/
+│  │  └─ Products/
+│  │
 │  ├─ App.css                 # style utama (termasuk import Tailwind CSS)
 │  ├─ App.tsx                 # root app (routing, layout)
 │  └─ main.tsx                # entry point
+│  
 ├─ package.json               # skrip dan dependensi
 ├─ vite.config.ts
 └─ tsconfig*.json

@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-export function useHome(){
+export function useHome() {
   const [active, setActive] = useState("FC");
   const [activeBrand, setActiveBrand] = useState("Adidas");
   const [activeSize, setActiveSize] = useState("XS");
   const [activeNumName, setActiveNumName] = useState("None");
 
- return {
+  return {
     active,
     activeBrand,
     activeSize,
@@ -15,7 +15,5 @@ export function useHome(){
     setActiveBrand,
     setActiveSize,
     setActiveNumName,
- };
-
+  };
 }
-

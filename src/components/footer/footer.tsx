@@ -31,7 +31,8 @@ function Footer() {
 
         <div className="flex flex-col justify-center w-50 h-50 bg-white/10 backdrop-blur-xl rounded-xl text-white">
           <h1 className="font-bold mx-6">
-            Become <span className="text-blue-500">Ath</span>lora member and get a discount up to 25%
+            Become <span className="text-blue-500">Ath</span>lora member and get
+            a discount up to 25%
           </h1>
           <button className="px-7 py-2 rounded-xl mx-auto mt-5 bg-blue-500">
             Sign Up Now
@@ -40,7 +41,10 @@ function Footer() {
       </div>
 
       <div className="text-white font-thin flex justify-center mb-10 bg-blue-950 pb-20">
-        <h1>Copyright @2026 <span className="text-blue-500"> Ath</span>lora Store. All Rights Reserved</h1>
+        <h1>
+          Copyright @2026 <span className="text-blue-500"> Ath</span>lora Store.
+          All Rights Reserved
+        </h1>
       </div>
     </div>
   );

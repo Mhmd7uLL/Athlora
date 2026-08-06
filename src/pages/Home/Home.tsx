@@ -246,7 +246,9 @@ function Home() {
                     ? "bg-blue-100 text-blue-500 border-blue-500 hover:bg-white"
                     : "text-gray-500 border-gray-200 hover:bg-gray-200"
                 }`}
-              >XS</button>
+              >
+                XS
+              </button>
               <button
                 onClick={() => setActiveSize("S")}
                 className={`relative z-10 rounded-2xl h-10 rounded-full border w-20 transition duration-300 hover:cursor-pointer ${
@@ -254,7 +256,9 @@ function Home() {
                     ? "bg-blue-100 text-blue-500 border-blue-500 hover:bg-white"
                     : "text-gray-500 border-gray-200 hover:bg-gray-200"
                 }`}
-              >S</button>
+              >
+                S
+              </button>
               <button
                 onClick={() => setActiveSize("M")}
                 className={`relative z-10 rounded-2xl h-10 rounded-full border w-20 transition duration-300 hover:cursor-pointer ${
@@ -262,7 +266,9 @@ function Home() {
                     ? "bg-blue-100 text-blue-500 border-blue-500 hover:bg-white"
                     : "text-gray-500 border-gray-200 hover:bg-gray-200"
                 }`}
-              >M</button>
+              >
+                M
+              </button>
               <button
                 onClick={() => setActiveSize("L")}
                 className={`relative z-10 rounded-2xl h-10 rounded-full border w-20 transition duration-300 hover:cursor-pointer ${
@@ -270,7 +276,9 @@ function Home() {
                     ? "bg-blue-100 text-blue-500 border-blue-500 hover:bg-white"
                     : "text-gray-500 border-gray-200 hover:bg-gray-200"
                 }`}
-              >L</button>
+              >
+                L
+              </button>
               <button
                 onClick={() => setActiveSize("XL")}
                 className={`relative z-10 rounded-2xl h-10 rounded-full border w-20 transition duration-300 hover:cursor-pointer ${
@@ -278,7 +286,9 @@ function Home() {
                     ? "bg-blue-100 text-blue-500 border-blue-500 hover:bg-white"
                     : "text-gray-500 border-gray-200 hover:bg-gray-200"
                 }`}
-              >XL</button>
+              >
+                XL
+              </button>
             </div>
           </div>
 
@@ -294,7 +304,9 @@ function Home() {
                     ? "bg-blue-100 text-blue-500 border-blue-500 hover:bg-white"
                     : "text-gray-500 border-gray-200 hover:bg-gray-200"
                 }`}
-              >None</button>
+              >
+                None
+              </button>
               <button
                 onClick={() => setActiveNumName("Player")}
                 className={`relative z-10 rounded-2xl h-10 rounded-full border w-35 transition duration-300 hover:cursor-pointer ${
@@ -302,7 +314,9 @@ function Home() {
                     ? "bg-blue-100 text-blue-500 border-blue-500 hover:bg-white"
                     : "text-gray-500 border-gray-200 hover:bg-gray-200"
                 }`}
-              >Select Player</button>
+              >
+                Select Player
+              </button>
               <button
                 onClick={() => setActiveNumName("Custom")}
                 className={`relative z-10 rounded-2xl h-10 rounded-full border w-25 transition duration-300 hover:cursor-pointer ${
@@ -310,17 +324,15 @@ function Home() {
                     ? "bg-blue-100 text-blue-500 border-blue-500 hover:bg-white"
                     : "text-gray-500 border-gray-200 hover:bg-gray-200"
                 }`}
-              >Custom</button>
+              >
+                Custom
+              </button>
             </div>
           </div>
-          
+
           <div>
-            {activeNumName === "Player" && (
-              <DropdownP />
-            )}
-            {activeNumName === "Custom" && (
-              <div>as2u</div>
-            )}
+            {activeNumName === "Player" && <DropdownP />}
+            {activeNumName === "Custom" && <div>as2u</div>}
           </div>
 
           <div className="flex flex-col mt-auto font-medium">

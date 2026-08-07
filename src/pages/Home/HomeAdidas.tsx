@@ -65,7 +65,7 @@ function HomeAdidas() {
       <div className="w-150 h-180 px-10 flex flex-col">
         <div className="font-bold">
           <h1 className="text-3xl my-5">
-            Spanish Home Kit Final World Cup 2026
+            Spanish Adidas Apparel Home Kit World Cup 2026
           </h1>
           <h3 className="text-xl">$ {totalPrice}</h3>
         </div>

@@ -64,7 +64,7 @@ function HomeNike() {
 
       <div className="w-150 h-180 px-10 flex flex-col">
         <div className="font-bold">
-          <h1 className="text-3xl my-5">Nike Brazil Home Kit 2026</h1>
+          <h1 className="text-3xl my-5">Nike Apparel Brazil World Cup Home Kit 2026</h1>
           <h3 className="text-xl">$ {totalPrice}</h3>
         </div>
 

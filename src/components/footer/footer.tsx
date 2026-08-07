@@ -14,18 +14,18 @@ function Footer() {
         <div className="flex flex-col w-50">
           <h1 className="text-blue-500 text-lg font-bold">Information</h1>
           <div className="flex flex-col gap-3 font-medium text-white text-md">
-            <a>How To Order</a>
-            <a>Track My Order</a>
-            <a>Shipping and Return</a>
-            <a>Terms & Conditions</a>
+            <a href="">How To Order</a>
+            <a href="">Track My Order</a>
+            <a href="">Shipping and Return</a>
+            <a href="">Terms & Conditions</a>
           </div>
         </div>
         <div className="flex flex-col w-50">
           <h1 className="text-blue-500 text-lg font-bold">Need Help?</h1>
           <div className="flex flex-col gap-3 font-medium text-white text-md">
-            <a>Servies</a>
-            <a>FAQs</a>
-            <a>Contact Us</a>
+            <a href="">Services</a>
+            <a href="">FAQs</a>
+            <a href="">Contact Us</a>
           </div>
         </div>
 
@@ -34,7 +34,7 @@ function Footer() {
             Become <span className="text-blue-500">Ath</span>lora member and get
             a discount up to 25%
           </h1>
-          <button className="px-7 py-2 rounded-xl mx-auto mt-5 bg-blue-500">
+          <button className="px-7 py-2 rounded-xl mx-auto mt-5 bg-blue-500 border border-blue-500 transition duration-300 hover:cursor-pointer hover:bg-blue-950">
             Sign Up Now
           </button>
         </div>

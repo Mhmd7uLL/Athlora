@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Info } from "lucide-react";
 
 function DropdownP() {
   const [open, setOpen] = useState(false);
@@ -34,7 +35,7 @@ function DropdownP() {
   ];
 
   return (
-    <div className="mt-5 relative font-medium">
+    <div className="mt-5 relative">
       <button
         onClick={() => setOpen(!open)}
         className="flex w-full justify-between bg-gray-300 rounded-3xl border border-gray-300 px-4 py-4 hover:border-blue-500"
@@ -42,6 +43,9 @@ function DropdownP() {
         {activePlayers}
         <span>⌄</span>
       </button>
+      <div className="flex flex-row gap-3 items-center py-2">
+      <Info size={20} className="text-blue-500"></Info><p className="text-xs">Choosing a real player's name will incur an additional fee of $10.</p>
+      </div>
 
       {open && (
         <div className="absolute z-10 mt-2 w-full rounded border bg-white shadow">

@@ -1,4 +1,7 @@
 import { useHome } from "../../hooks/useHome";
+import { getAdditionalPrice } from "../../utils/additionalPrice/additionalPrice";
+import { getTotalPrice } from "../../utils/calculateTotal/calculateTotal";
+
 import mainBG from "../../assets/homeAssets/mainBG.webp";
 import DropdownP from "../../components/dropdownPlayer/DropdownP";
 
@@ -13,6 +16,11 @@ function Home() {
     setActiveSize,
     setActiveNumName,
   } = useHome();
+
+  const basePrice = 250;
+
+  const additionalPrice = getAdditionalPrice(activeNumName);
+  const totalPrice = getTotalPrice(basePrice, additionalPrice);
 
   return (
     <div>
@@ -212,9 +220,9 @@ function Home() {
       </div>
 
       <div className="flex flex-row gap-3 justify-center">
-        <div className="bg-white w-150 h-180">
-          <div></div>
-          <div className="flex h-full justify-center items-end gap-10">
+        <div className="bg-white w-150 h-110">
+          <div className="bg-red-500 w-full h-150 mb-8"></div>
+          <div className="flex h-full justify-center gap-10">
             <div className="bg-blue-500 w-30 h-22 gap-3 rounded-xl"></div>
             <div className="bg-blue-500 w-30 h-22 gap-3 rounded-xl"></div>
             <div className="bg-blue-500 w-30 h-22 gap-3 rounded-xl"></div>
@@ -228,7 +236,7 @@ function Home() {
             <h1 className="text-3xl my-5">
               Spanish Home Kit Final World Cup 2026
             </h1>
-            <h3 className="text-xl">$ 250</h3>
+            <h3 className="text-xl">$ {totalPrice}</h3>
           </div>
 
           <hr className="my-5"></hr>
@@ -332,13 +340,28 @@ function Home() {
 
           <div>
             {activeNumName === "Player" && <DropdownP />}
-            {activeNumName === "Custom" && <div>as2u</div>}
+            {activeNumName === "Custom" && (
+              <div className="flex flex-col gap-3">
+                <div>
+                  <form className="mt-5 text-sm">
+                    <label>Custom Number + $10 Additional Price</label><br></br>
+                    <input placeholder="Input Here" className="bg-gray-200 w-100 px-5 py-3 rounded-xl border border-blue-500"/>
+                  </form>
+                </div>
+                <div>
+                  <form className="mt-5 text-sm">
+                    <label>Custom Name + $  15 Additional Price</label><br></br>
+                    <input placeholder="Input Here" className="bg-gray-200 w-100 px-5 py-3 rounded-xl border border-blue-500"/>
+                  </form>
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="flex flex-col mt-auto font-medium">
             <div className="flex justify-between text-xl">
               <h1>Total</h1>
-              <h1>$ 250</h1>
+              <h1>$ {totalPrice}</h1>
             </div>
             <button className="flex justify-center items-center mt-5 bg-blue-500 text-white h-15 w-full rounded-2xl transition duration-300 hover:cursor-pointer hover:bg-blue-950">
               Add to cart

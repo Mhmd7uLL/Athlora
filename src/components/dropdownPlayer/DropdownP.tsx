@@ -44,7 +44,10 @@ function DropdownP() {
         <span>⌄</span>
       </button>
       <div className="flex flex-row gap-3 items-center py-2">
-      <Info size={20} className="text-blue-500"></Info><p className="text-xs">Choosing a real player's name will incur an additional fee of $10.</p>
+        <Info size={20} className="text-blue-500"></Info>
+        <p className="text-xs">
+          Choosing a real player's name will incur an additional fee of $25.
+        </p>
       </div>
 
       {open && (

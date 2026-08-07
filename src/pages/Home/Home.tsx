@@ -5,16 +5,26 @@ import { getTotalPrice } from "../../utils/calculateTotal/calculateTotal";
 import mainBG from "../../assets/homeAssets/mainBG.webp";
 import DropdownP from "../../components/dropdownPlayer/DropdownP";
 
+import pict1 from "../../assets/adidasEspana/pict1.webp";
+import pict2 from "../../assets/adidasEspana/pict2.webp";
+import pict3 from "../../assets/adidasEspana/pict3.webp";
+import pict4 from "../../assets/adidasEspana/pict4.webp";
+import pict5 from "../../assets/adidasEspana/pict5.webp";
+
 function Home() {
   const {
     active,
     activeBrand,
     activeSize,
+    activeKit,
     activeNumName,
+    customNum,
     setActive,
     setActiveBrand,
     setActiveSize,
+    setActiveKit,
     setActiveNumName,
+    setCustomNum,
   } = useHome();
 
   const basePrice = 250;
@@ -221,13 +231,36 @@ function Home() {
 
       <div className="flex flex-row gap-3 justify-center">
         <div className="bg-white w-150 h-110">
-          <div className="bg-red-500 w-full h-150 mb-8"></div>
-          <div className="flex h-full justify-center gap-10">
-            <div className="bg-blue-500 w-30 h-22 gap-3 rounded-xl"></div>
-            <div className="bg-blue-500 w-30 h-22 gap-3 rounded-xl"></div>
-            <div className="bg-blue-500 w-30 h-22 gap-3 rounded-xl"></div>
-            <div className="bg-blue-500 w-30 h-22 gap-3 rounded-xl"></div>
-            <div className="bg-blue-500 w-30 h-22 gap-3 rounded-xl"></div>
+          <img src={activeKit} className="w-full h-150 mb-8 rounded-3xl"></img>
+          <div
+            className="flex h-full justify-center gap-10"
+            onMouseLeave={() => setActiveKit(pict1)}
+          >
+            <img
+              src={pict1}
+              onMouseEnter={() => setActiveKit(pict1)}
+              className="bg-blue-500 w-22 h-22 gap-3 rounded-xl hover:cursor-pointer"
+            ></img>
+            <img
+              src={pict2}
+              onMouseEnter={() => setActiveKit(pict2)}
+              className="bg-blue-500 w-22 h-22 gap-3 rounded-xl hover:cursor-pointer"
+            ></img>
+            <img
+              src={pict3}
+              onMouseEnter={() => setActiveKit(pict3)}
+              className="bg-blue-500 w-22 h-22 gap-3 rounded-xl hover:cursor-pointer"
+            ></img>
+            <img
+              src={pict4}
+              onMouseEnter={() => setActiveKit(pict4)}
+              className="bg-blue-500 w-22 h-22 gap-3 rounded-xl hover:cursor-pointer"
+            ></img>
+            <img
+              src={pict5}
+              onMouseEnter={() => setActiveKit(pict5)}
+              className="bg-blue-500 w-22 h-22 gap-3 rounded-xl hover:cursor-pointer"
+            ></img>
           </div>
         </div>
 
@@ -344,14 +377,38 @@ function Home() {
               <div className="flex flex-col gap-3">
                 <div>
                   <form className="mt-5 text-sm">
-                    <label>Custom Number + $10 Additional Price</label><br></br>
-                    <input placeholder="Input Here" className="bg-gray-200 w-100 px-5 py-3 rounded-xl border border-blue-500"/>
+                    <label>Custom Number + $15 Additional Price</label>
+                    <br></br>
+                    <input
+                      type="number"
+                      min={1}
+                      max={99}
+                      value={customNum}
+                      onChange={(e) => {
+                        const value = e.target.value;
+
+                        if (value === "") {
+                          setCustomNum("");
+                          return;
+                        }
+
+                        if (Number(value) <= 99) {
+                          setCustomNum(Number(value));
+                        }
+                      }}
+                      placeholder="Input Number"
+                      className="bg-gray-200 w-100 px-5 py-3 rounded-xl border border-blue-500 font-medium"
+                    />
                   </form>
                 </div>
                 <div>
                   <form className="mt-5 text-sm">
-                    <label>Custom Name + $  15 Additional Price</label><br></br>
-                    <input placeholder="Input Here" className="bg-gray-200 w-100 px-5 py-3 rounded-xl border border-blue-500"/>
+                    <label>Custom Name + $20 Additional Price</label>
+                    <br></br>
+                    <input
+                      placeholder="Input Name"
+                      className="bg-gray-200 w-100 px-5 py-3 rounded-xl border border-blue-500 font-medium"
+                    />
                   </form>
                 </div>
               </div>

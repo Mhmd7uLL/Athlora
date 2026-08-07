@@ -26,12 +26,12 @@ Athlora (Athletic Lifestyle and Original Apparel) adalah toko pakaian olahraga m
 │  │  ├─ dropdownPlayer/      # dropdown menu untuk pemilihan nama
 │  │  ├─ footer/              # informasi footer untuk seluruh halaman
 │  │  └─ navbar/              # komponen navigasi
-│  │        
+│  ├─ hooks/                  # fungsi state & effect React
 │  ├─ pages/                  # halaman untuk web (Home, Cart, Products, dsb)
 │  │  ├─ Cart/
 │  │  ├─ Home/
 │  │  └─ Products/
-│  │
+│  ├─ utils/                  # fungsi bantuan (total, dsb)
 │  ├─ App.css                 # style utama (termasuk import Tailwind CSS)
 │  ├─ App.tsx                 # root app (routing, layout)
 │  └─ main.tsx                # entry point

@@ -1,37 +1,37 @@
 import { useState } from "react";
 import { Info } from "lucide-react";
 
-function DropdownP() {
+function DropdownN() {
   const [open, setOpen] = useState(false);
   const [activePlayers, setActivePlayers] = useState("Select Player");
 
   const players = [
-    "David Raya, 1",
-    "Marc Pubill, 2",
-    "Alex Grimaldo, 3",
-    "Eric Garcia, 4",
-    "Marcos Llorente, 5",
-    "Mikel Merino, 6",
-    "Ferran Torres, 7",
-    "Fabian Ruiz, 8",
-    "Gavi, 9",
-    "Dani Olmo, 10",
-    "Yeremy Pino, 11",
-    "Pedro Porro, 12",
-    "Joan Garcia, 13",
-    "Aymeric Laporte, 14",
-    "Alex Baena, 15",
-    "Rodri, 16",
-    "Nico Williams, 17",
-    "Martin Zubimendi, 18",
-    "Lamine Yamal, 19",
-    "Pedri, 20",
-    "Mikel Oyarzabal, 21",
-    "Pau Cubarsi, 22",
-    "Unai Simon, 23",
-    "Marc Cucurella, 24",
-    "Victor Munoz, 25",
-    "Borja Iglesias, 26",
+    "Alisson, 1",
+    "Wesley, 2",
+    "Gabriel Magalhaes, 3",
+    "Marquinhos, 4",
+    "Casemiro, 5",
+    "Alex Sandro, 6",
+    "Vinicius Junior, 7",
+    "Bruno Guimaraes, 8",
+    "Matheus Cunha, 9",
+    "Neymar, 10",
+    "Raphinha, 11",
+    "Weverton, 12",
+    "Danilo, 13",
+    "Bremer, 14",
+    "Leo Pereira, 15",
+    "Douglas Santos, 16",
+    "Fabinho, 17",
+    "Danilo Santos, 18",
+    "Endrick, 19",
+    "Lucas Paqueta, 20",
+    "Luiz Henrique, 21",
+    "Martinelli, 22",
+    "Ederson, 23",
+    "Ibanez, 24",
+    "Igor Thiago, 25",
+    "Rayan, 26",
   ];
 
   return (
@@ -70,4 +70,4 @@ function DropdownP() {
   );
 }
 
-export default DropdownP;
+export default DropdownN;

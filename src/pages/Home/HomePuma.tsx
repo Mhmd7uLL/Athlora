@@ -1,13 +1,13 @@
 import { getAdditionalPrice } from "../../utils/additionalPrice/additionalPrice";
 import { getTotalPrice } from "../../utils/calculateTotal/calculateTotal";
-import { useHome } from "../../hooks/useHome";
+import { usePuma } from "../../hooks/hooksBrand/usePuma";
 
-import DropdownP from "../../components/dropdownPlayer/DropdownP";
-import pict1 from "../../assets/adidasEspana/pict1.webp";
-import pict2 from "../../assets/adidasEspana/pict2.webp";
-import pict3 from "../../assets/adidasEspana/pict3.webp";
-import pict4 from "../../assets/adidasEspana/pict4.webp";
-import pict5 from "../../assets/adidasEspana/pict5.webp";
+import DropdownP from "../../components/dropdownPlayer/DropdownPuma/DropdownP";
+import pict1 from "../../assets/homeAssets/pumaPortugal/pict1.jpg";
+import pict2 from "../../assets/homeAssets/pumaPortugal/pict2.webp";
+import pict3 from "../../assets/homeAssets/pumaPortugal/pict3.webp";
+import pict4 from "../../assets/homeAssets/pumaPortugal/pict4.webp";
+import pict5 from "../../assets/homeAssets/pumaPortugal/pict5.webp";
 
 function HomePuma() {
   const {
@@ -19,7 +19,7 @@ function HomePuma() {
     setActiveKit,
     setActiveNumName,
     setCustomNum,
-  } = useHome();
+  } = usePuma();
 
   const basePrice = 250;
 
@@ -65,7 +65,7 @@ function HomePuma() {
       <div className="w-150 h-180 px-10 flex flex-col">
         <div className="font-bold">
           <h1 className="text-3xl my-5">
-            Puma Portugal Home Kit Final World Cup 2026
+            Puma Apparel Portugal Home Kit World Cup 2026
           </h1>
           <h3 className="text-xl">$ {totalPrice}</h3>
         </div>

@@ -1,13 +1,13 @@
 import { getAdditionalPrice } from "../../utils/additionalPrice/additionalPrice";
 import { getTotalPrice } from "../../utils/calculateTotal/calculateTotal";
-import { useHome } from "../../hooks/useHome";
+import { useAdidas } from "../../hooks/hooksBrand/useAdidas";
 
-import DropdownP from "../../components/dropdownPlayer/DropdownP";
-import pict1 from "../../assets/adidasEspana/pict1.webp";
-import pict2 from "../../assets/adidasEspana/pict2.webp";
-import pict3 from "../../assets/adidasEspana/pict3.webp";
-import pict4 from "../../assets/adidasEspana/pict4.webp";
-import pict5 from "../../assets/adidasEspana/pict5.webp";
+import DropdownA from "../../components/dropdownPlayer/DropdownAdidas/DropdownA";
+import pict1 from "../../assets/homeAssets/adidasEspana/pict1.webp";
+import pict2 from "../../assets/homeAssets/adidasEspana/pict2.webp";
+import pict3 from "../../assets/homeAssets/adidasEspana/pict3.webp";
+import pict4 from "../../assets/homeAssets/adidasEspana/pict4.webp";
+import pict5 from "../../assets/homeAssets/adidasEspana/pict5.webp";
 
 function HomeAdidas() {
   const {
@@ -19,7 +19,7 @@ function HomeAdidas() {
     setActiveKit,
     setActiveNumName,
     setCustomNum,
-  } = useHome();
+  } = useAdidas();
 
   const basePrice = 250;
 
@@ -65,7 +65,7 @@ function HomeAdidas() {
       <div className="w-150 h-180 px-10 flex flex-col">
         <div className="font-bold">
           <h1 className="text-3xl my-5">
-            Spanish Adidas Apparel Home Kit World Cup 2026
+            Adidas Apparel Spanish  Home Kit World Cup 2026
           </h1>
           <h3 className="text-xl">$ {totalPrice}</h3>
         </div>
@@ -170,7 +170,7 @@ function HomeAdidas() {
         </div>
 
         <div>
-          {activeNumName === "Player" && <DropdownP />}
+          {activeNumName === "Player" && <DropdownA />}
           {activeNumName === "Custom" && (
             <div className="flex flex-col gap-3">
               <div>

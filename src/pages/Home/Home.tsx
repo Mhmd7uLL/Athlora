@@ -149,7 +149,7 @@ function Home() {
       </div>
 
       <div>
-        <div className="flex flex-col justify-center text-center mt-40 mb-20">
+        <div className="flex flex-col justify-center text-center mt-30 mb-20">
           <h1 className="text-5xl font-bold">Make it Yours!</h1>
           <p>One of the Popular Brands below</p>
         </div>

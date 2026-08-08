@@ -2,12 +2,12 @@ import { getAdditionalPrice } from "../../utils/additionalPrice/additionalPrice"
 import { getTotalPrice } from "../../utils/calculateTotal/calculateTotal";
 import { useHome } from "../../hooks/useHome";
 
-import DropdownP from "../../components/dropdownPlayer/DropdownP";
-import pict1 from "../../assets/adidasEspana/pict1.webp";
-import pict2 from "../../assets/adidasEspana/pict2.webp";
-import pict3 from "../../assets/adidasEspana/pict3.webp";
-import pict4 from "../../assets/adidasEspana/pict4.webp";
-import pict5 from "../../assets/adidasEspana/pict5.webp";
+import DropdownP from "../../components/dropdownPlayer/DropdownAdidas/DropdownA";
+import pict1 from "../../assets/homeAssets/adidasEspana/pict1.webp";
+import pict2 from "../../assets/homeAssets/adidasEspana/pict2.webp";
+import pict3 from "../../assets/homeAssets/adidasEspana/pict3.webp";
+import pict4 from "../../assets/homeAssets/adidasEspana/pict4.webp";
+import pict5 from "../../assets/homeAssets/adidasEspana/pict5.webp";
 
 function HomeNB() {
   const {

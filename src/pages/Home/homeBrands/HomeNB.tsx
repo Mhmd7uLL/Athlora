@@ -1,15 +1,15 @@
-import { getAdditionalPrice } from "../../utils/additionalPrice/additionalPrice";
-import { getTotalPrice } from "../../utils/calculateTotal/calculateTotal";
-import { useNike } from "../../hooks/hooksBrand/useNike";
+import { getAdditionalPrice } from "../../../utils/additionalPrice/additionalPrice";
+import { getTotalPrice } from "../../../utils/calculateTotal/calculateTotal";
+import { useNike } from "../../../hooks/hooksBrand/useNike";
 
-import DropdownN from "../../components/dropdownPlayer/DropdownNike/DropdownN";
-import pict1 from "../../assets/homeAssets/nikeBrazil/pict1.webp";
-import pict2 from "../../assets/homeAssets/nikeBrazil/pict2.webp";
-import pict3 from "../../assets/homeAssets/nikeBrazil/pict3.webp";
-import pict4 from "../../assets/homeAssets/nikeBrazil/pict4.webp";
-import pict5 from "../../assets/homeAssets/nikeBrazil/pict5.webp";
+import DropdownP from "../../../components/dropdownPlayer/DropdownAdidas/DropdownA";
+import pict1 from "../../../assets/homeAssets/adidasEspana/pict1.webp";
+import pict2 from "../../../assets/homeAssets/adidasEspana/pict2.webp";
+import pict3 from "../../../assets/homeAssets/adidasEspana/pict3.webp";
+import pict4 from "../../../assets/homeAssets/adidasEspana/pict4.webp";
+import pict5 from "../../../assets/homeAssets/adidasEspana/pict5.webp";
 
-function HomeNike() {
+function HomeNB() {
   const {
     activeSize,
     activeKit,
@@ -64,7 +64,7 @@ function HomeNike() {
 
       <div className="w-150 h-180 px-10 flex flex-col">
         <div className="font-bold">
-          <h1 className="text-3xl my-5">Nike Apparel Brazil World Cup Home Kit 2026</h1>
+          <h1 className="text-3xl my-5">TBA2</h1>
           <h3 className="text-xl">$ {totalPrice}</h3>
         </div>
 
@@ -168,7 +168,7 @@ function HomeNike() {
         </div>
 
         <div>
-          {activeNumName === "Player" && <DropdownN />}
+          {activeNumName === "Player" && <DropdownP />}
           {activeNumName === "Custom" && (
             <div className="flex flex-col gap-3">
               <div>
@@ -225,4 +225,4 @@ function HomeNike() {
   );
 }
 
-export default HomeNike;
+export default HomeNB;

@@ -1,9 +1,9 @@
 import { useHome } from "../../hooks/useHome";
-import HomeAdidas from "./HomeAdidas";
-import HomeNike from "./HomeNike";
-import HomePuma from "./HomePuma";
-import HomeUA from "./HomeUA";
-import HomeNB from "./HomeNB";
+import HomeAdidas from "./homeBrands/HomeAdidas";
+import HomeNike from "./homeBrands/HomeNike";
+import HomePuma from "./homeBrands/HomePuma";
+import HomeUA from "./homeBrands/HomeUA";
+import HomeNB from "./homeBrands/HomeNB";
 
 import mainBG from "../../assets/homeAssets/mainBG.webp";
 

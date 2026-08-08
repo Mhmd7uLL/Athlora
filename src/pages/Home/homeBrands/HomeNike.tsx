@@ -1,15 +1,15 @@
-import { getAdditionalPrice } from "../../utils/additionalPrice/additionalPrice";
-import { getTotalPrice } from "../../utils/calculateTotal/calculateTotal";
-import { useAdidas } from "../../hooks/hooksBrand/useAdidas";
+import { getAdditionalPrice } from "../../../utils/additionalPrice/additionalPrice";
+import { getTotalPrice } from "../../../utils/calculateTotal/calculateTotal";
+import { useNike } from "../../../hooks/hooksBrand/useNike";
 
-import DropdownA from "../../components/dropdownPlayer/DropdownAdidas/DropdownA";
-import pict1 from "../../assets/homeAssets/adidasEspana/pict1.webp";
-import pict2 from "../../assets/homeAssets/adidasEspana/pict2.webp";
-import pict3 from "../../assets/homeAssets/adidasEspana/pict3.webp";
-import pict4 from "../../assets/homeAssets/adidasEspana/pict4.webp";
-import pict5 from "../../assets/homeAssets/adidasEspana/pict5.webp";
+import DropdownN from "../../../components/dropdownPlayer/DropdownNike/DropdownN";
+import pict1 from "../../../assets/homeAssets/nikeBrazil/pict1.webp";
+import pict2 from "../../../assets/homeAssets/nikeBrazil/pict2.webp";
+import pict3 from "../../../assets/homeAssets/nikeBrazil/pict3.webp";
+import pict4 from "../../../assets/homeAssets/nikeBrazil/pict4.webp";
+import pict5 from "../../../assets/homeAssets/nikeBrazil/pict5.webp";
 
-function HomeAdidas() {
+function HomeNike() {
   const {
     activeSize,
     activeKit,
@@ -19,9 +19,9 @@ function HomeAdidas() {
     setActiveKit,
     setActiveNumName,
     setCustomNum,
-  } = useAdidas();
+  } = useNike();
 
-  const basePrice = 270;
+  const basePrice = 250;
 
   const additionalPrice = getAdditionalPrice(activeNumName);
   const totalPrice = getTotalPrice(basePrice, additionalPrice);
@@ -64,9 +64,7 @@ function HomeAdidas() {
 
       <div className="w-150 h-180 px-10 flex flex-col">
         <div className="font-bold">
-          <h1 className="text-3xl my-5">
-            Adidas Apparel Spanish  Home Kit World Cup 2026
-          </h1>
+          <h1 className="text-3xl my-5">Nike Apparel Brazil World Cup Home Kit 2026</h1>
           <h3 className="text-xl">$ {totalPrice}</h3>
         </div>
 
@@ -170,7 +168,7 @@ function HomeAdidas() {
         </div>
 
         <div>
-          {activeNumName === "Player" && <DropdownA />}
+          {activeNumName === "Player" && <DropdownN />}
           {activeNumName === "Custom" && (
             <div className="flex flex-col gap-3">
               <div>
@@ -227,4 +225,4 @@ function HomeAdidas() {
   );
 }
 
-export default HomeAdidas;
+export default HomeNike;

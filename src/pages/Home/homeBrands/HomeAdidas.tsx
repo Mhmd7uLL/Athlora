@@ -1,15 +1,15 @@
-import { getAdditionalPrice } from "../../utils/additionalPrice/additionalPrice";
-import { getTotalPrice } from "../../utils/calculateTotal/calculateTotal";
-import { useHome } from "../../hooks/useHome";
+import { getAdditionalPrice } from "../../../utils/additionalPrice/additionalPrice";
+import { getTotalPrice } from "../../../utils/calculateTotal/calculateTotal";
+import { useAdidas } from "../../../hooks/hooksBrand/useAdidas";
 
-import DropdownP from "../../components/dropdownPlayer/DropdownAdidas/DropdownA";
-import pict1 from "../../assets/homeAssets/adidasEspana/pict1.webp";
-import pict2 from "../../assets/homeAssets/adidasEspana/pict2.webp";
-import pict3 from "../../assets/homeAssets/adidasEspana/pict3.webp";
-import pict4 from "../../assets/homeAssets/adidasEspana/pict4.webp";
-import pict5 from "../../assets/homeAssets/adidasEspana/pict5.webp";
+import DropdownA from "../../../components/dropdownPlayer/DropdownAdidas/DropdownA";
+import pict1 from "../../../assets/homeAssets/adidasEspana/pict1.webp";
+import pict2 from "../../../assets/homeAssets/adidasEspana/pict2.webp";
+import pict3 from "../../../assets/homeAssets/adidasEspana/pict3.webp";
+import pict4 from "../../../assets/homeAssets/adidasEspana/pict4.webp";
+import pict5 from "../../../assets/homeAssets/adidasEspana/pict5.webp";
 
-function HomeUA() {
+function HomeAdidas() {
   const {
     activeSize,
     activeKit,
@@ -19,9 +19,9 @@ function HomeUA() {
     setActiveKit,
     setActiveNumName,
     setCustomNum,
-  } = useHome();
+  } = useAdidas();
 
-  const basePrice = 250;
+  const basePrice = 270;
 
   const additionalPrice = getAdditionalPrice(activeNumName);
   const totalPrice = getTotalPrice(basePrice, additionalPrice);
@@ -64,7 +64,9 @@ function HomeUA() {
 
       <div className="w-150 h-180 px-10 flex flex-col">
         <div className="font-bold">
-          <h1 className="text-3xl my-5">TBA</h1>
+          <h1 className="text-3xl my-5">
+            Adidas Apparel Spanish  Home Kit World Cup 2026
+          </h1>
           <h3 className="text-xl">$ {totalPrice}</h3>
         </div>
 
@@ -168,7 +170,7 @@ function HomeUA() {
         </div>
 
         <div>
-          {activeNumName === "Player" && <DropdownP />}
+          {activeNumName === "Player" && <DropdownA />}
           {activeNumName === "Custom" && (
             <div className="flex flex-col gap-3">
               <div>
@@ -225,4 +227,4 @@ function HomeUA() {
   );
 }
 
-export default HomeUA;
+export default HomeAdidas;

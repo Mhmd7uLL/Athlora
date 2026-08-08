@@ -1,15 +1,15 @@
-import { getAdditionalPrice } from "../../utils/additionalPrice/additionalPrice";
-import { getTotalPrice } from "../../utils/calculateTotal/calculateTotal";
-import { usePuma } from "../../hooks/hooksBrand/usePuma";
+import { getAdditionalPrice } from "../../../utils/additionalPrice/additionalPrice";
+import { getTotalPrice } from "../../../utils/calculateTotal/calculateTotal";
+import { useNike } from "../../../hooks/hooksBrand/useNike";
 
-import DropdownP from "../../components/dropdownPlayer/DropdownPuma/DropdownP";
-import pict1 from "../../assets/homeAssets/pumaPortugal/pict1.jpg";
-import pict2 from "../../assets/homeAssets/pumaPortugal/pict2.webp";
-import pict3 from "../../assets/homeAssets/pumaPortugal/pict3.webp";
-import pict4 from "../../assets/homeAssets/pumaPortugal/pict4.webp";
-import pict5 from "../../assets/homeAssets/pumaPortugal/pict5.webp";
+import DropdownP from "../../../components/dropdownPlayer/DropdownAdidas/DropdownA";
+import pict1 from "../../../assets/homeAssets/adidasEspana/pict1.webp";
+import pict2 from "../../../assets/homeAssets/adidasEspana/pict2.webp";
+import pict3 from "../../../assets/homeAssets/adidasEspana/pict3.webp";
+import pict4 from "../../../assets/homeAssets/adidasEspana/pict4.webp";
+import pict5 from "../../../assets/homeAssets/adidasEspana/pict5.webp";
 
-function HomePuma() {
+function HomeUA() {
   const {
     activeSize,
     activeKit,
@@ -19,9 +19,9 @@ function HomePuma() {
     setActiveKit,
     setActiveNumName,
     setCustomNum,
-  } = usePuma();
+  } = useNike();
 
-  const basePrice = 265;
+  const basePrice = 250;
 
   const additionalPrice = getAdditionalPrice(activeNumName);
   const totalPrice = getTotalPrice(basePrice, additionalPrice);
@@ -64,9 +64,7 @@ function HomePuma() {
 
       <div className="w-150 h-180 px-10 flex flex-col">
         <div className="font-bold">
-          <h1 className="text-3xl my-5">
-            Puma Apparel Portugal Home Kit World Cup 2026
-          </h1>
+          <h1 className="text-3xl my-5">TBA</h1>
           <h3 className="text-xl">$ {totalPrice}</h3>
         </div>
 
@@ -227,4 +225,4 @@ function HomePuma() {
   );
 }
 
-export default HomePuma;
+export default HomeUA;

@@ -1,12 +1,19 @@
+import { Link } from "react-router-dom";
+
+import cart from "../../assets/navAssets/cart.svg";
+import profile from "../../assets/navAssets/profile.svg";
+
 function Navbar() {
   return (
     <nav className="w-full h-30 bg-white">
       <div className="h-full grid grid-cols-3 items-center px-20">
         <div className="flex flex-col">
-          <h1 className="text-4xl font-bold">
-            <span className="text-blue-500">Ath</span>lora.
-          </h1>
-          <p className="text-xs">Athletic Lifestyle and Original Apparel</p>
+          <Link to="/">
+            <h1 className="text-4xl font-bold">
+              <span className="text-blue-500">Ath</span>lora.
+            </h1>
+            <p className="text-xs">Athletic Lifestyle and Original Apparel</p>
+          </Link>
         </div>
         <form className="flex justify-center">
           <input
@@ -17,8 +24,12 @@ function Navbar() {
         </form>
         <div className="flex justify-end gap-5">
           <span>USD | EN</span>
-          <span>Profile</span>
-          <span>Cart</span>
+          <Link to="">
+            <img src={profile} className="w-6 h-6"></img>
+          </Link>
+          <a href="/cart">
+            <img src={cart} className="w-6 h-6"></img>
+          </a>
         </div>
       </div>
     </nav>

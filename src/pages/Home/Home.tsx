@@ -1,4 +1,6 @@
 import { useHome } from "../../hooks/useHome";
+
+import Categories from "../../components/categories/Categories";
 import HomeAdidas from "./homeBrands/HomeAdidas";
 import HomeNike from "./homeBrands/HomeNike";
 import HomePuma from "./homeBrands/HomePuma";
@@ -12,6 +14,8 @@ function Home() {
 
   return (
     <div>
+      <Categories />
+
       <div className="h-120 bg-blue-950 mt-1">
         <div
           className="w-full h-120 flex justify-end items-center bg-contain bg-center bg-no-repeat"
@@ -29,7 +33,7 @@ function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col mx-auto">
+      <div className="flex flex-col mx-4">
         <h1 className="flex justify-center text-5xl my-20 font-bold">
           Popular Products
         </h1>
@@ -148,7 +152,7 @@ function Home() {
         </div>
       </div>
 
-      <div>
+      <div className="mx-2">
         <div className="flex flex-col justify-center text-center mt-30 mb-20">
           <h1 className="text-5xl font-bold">Make it Yours!</h1>
           <p>One of the Popular Brands below</p>

@@ -27,7 +27,7 @@ function HomeAdidas() {
   const totalPrice = getTotalPrice(basePrice, additionalPrice);
 
   return (
-    <div className="flex flex-row gap-3 justify-center">
+    <div className="flex flex-row gap-9 justify-center">
       <div className="bg-white w-150 h-110">
         <img src={activeKit} className="w-full h-150 mb-8 rounded-3xl"></img>
         <div

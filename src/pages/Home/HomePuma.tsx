@@ -21,7 +21,7 @@ function HomePuma() {
     setCustomNum,
   } = usePuma();
 
-  const basePrice = 250;
+  const basePrice = 265;
 
   const additionalPrice = getAdditionalPrice(activeNumName);
   const totalPrice = getTotalPrice(basePrice, additionalPrice);

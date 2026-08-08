@@ -21,7 +21,7 @@ function HomeAdidas() {
     setCustomNum,
   } = useAdidas();
 
-  const basePrice = 250;
+  const basePrice = 270;
 
   const additionalPrice = getAdditionalPrice(activeNumName);
   const totalPrice = getTotalPrice(basePrice, additionalPrice);

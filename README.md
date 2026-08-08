@@ -82,7 +82,3 @@ Gunakan pola komponen terpisah dan TypeScript typings untuk menjaga konsistensi.
 
 ## Lisensi
 Tambahkan lisensi yang sesuai (contoh: MIT) di file `LICENSE` jika proyek akan dibuka untuk publik.
-
-## Kontak
-Proyek oleh: @Mhmd7uLL  
-Untuk pertanyaan atau instruksi lebih lanjut, buat issue atau PR di repository.

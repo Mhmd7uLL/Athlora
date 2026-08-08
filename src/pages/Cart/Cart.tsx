@@ -16,9 +16,7 @@ function Cart() {
           <div className="w-190 h-150">
             <div className="grid grid-cols-4">
               <div className="font-medium text-2xl py-2">Your Stuff(s)</div>
-              <div className="text-center font-medium text-2xl py-2">
-                Price
-              </div>
+              <div className="text-center font-medium text-2xl py-2">Price</div>
               <div className="text-center font-medium text-2xl py-2">
                 Quantity(s)
               </div>
@@ -64,8 +62,8 @@ function Cart() {
               <div className="text-end">${subTotal}</div>
             </div>
             <div className="flex flex-row justify-between w-full my-5 py-3 border-y-1 font-medium text-lg">
-                <h1>ORDER SUBTOTAL</h1>
-                <h1>$ {subTotal}</h1>
+              <h1>ORDER SUBTOTAL</h1>
+              <h1>$ {subTotal}</h1>
             </div>
           </div>
 

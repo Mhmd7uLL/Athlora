@@ -24,7 +24,7 @@ function Navbar() {
         </form>
         <div className="flex justify-end gap-5">
           <span>USD | EN</span>
-          <Link to="">
+          <Link to="/profile">
             <img src={profile} className="w-6 h-6"></img>
           </Link>
           <a href="/cart">

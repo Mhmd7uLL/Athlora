@@ -4,8 +4,6 @@ import Categories from "../../components/categories/Categories";
 import HomeAdidas from "./homeBrands/HomeAdidas";
 import HomeNike from "./homeBrands/HomeNike";
 import HomePuma from "./homeBrands/HomePuma";
-import HomeUA from "./homeBrands/HomeUA";
-import HomeNB from "./homeBrands/HomeNB";
 
 import mainBG from "../../assets/homeAssets/mainBG.webp";
 
@@ -188,26 +186,6 @@ function Home() {
           >
             Puma
           </button>
-          <button
-            onClick={() => setActiveBrand("UnderArmour")}
-            className={`relative z-10 rounded-2xl h-full rounded-full border py-3 px-5 transition duration-300 hover:cursor-pointer ${
-              activeBrand === "UnderArmour"
-                ? "bg-blue-100 text-blue-500 border-blue-500 hover:bg-white"
-                : "text-gray-500 border-gray-200 hover:bg-gray-200"
-            }`}
-          >
-            Under Armour
-          </button>
-          <button
-            onClick={() => setActiveBrand("NewBalance")}
-            className={`relative z-10 rounded-2xl h-full rounded-full border py-3 px-5 transition duration-300 hover:cursor-pointer ${
-              activeBrand === "NewBalance"
-                ? "bg-blue-100 text-blue-500 border-blue-500 hover:bg-white"
-                : "text-gray-500 border-gray-200 hover:bg-gray-200"
-            }`}
-          >
-            New Balance
-          </button>
         </div>
       </div>
 
@@ -215,8 +193,6 @@ function Home() {
         {activeBrand === "Adidas" && <HomeAdidas />}
         {activeBrand === "Nike" && <HomeNike />}
         {activeBrand === "Puma" && <HomePuma />}
-        {activeBrand === "UnderArmour" && <HomeUA />}
-        {activeBrand === "NewBalance" && <HomeNB />}
       </div>
     </div>
   );

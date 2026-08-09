@@ -40,7 +40,7 @@ function Cart() {
                     onClick={() =>
                       setQuantity((quantity) => Math.max(1, quantity - 1))
                     }
-                    className="rounded-md bg-blue-500 w-5 h-5 flex items-center justify-center text-white"
+                    className="rounded-md bg-blue-500 w-5 h-5 flex items-center justify-center text-white hover:cursor-pointer"
                   >
                     -
                   </button>
@@ -53,7 +53,7 @@ function Cart() {
                   <button
                     type="button"
                     onClick={() => setQuantity((quantity) => quantity + 1)}
-                    className="rounded-md bg-blue-500 w-5 h-5 flex items-center justify-center text-white"
+                    className="rounded-md bg-blue-500 w-5 h-5 flex items-center justify-center text-white hover:cursor-pointer"
                   >
                     +
                   </button>

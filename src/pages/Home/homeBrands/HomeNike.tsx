@@ -1,6 +1,7 @@
 import { getAdditionalPrice } from "../../../utils/additionalPrice/additionalPrice";
 import { getTotalPrice } from "../../../utils/calculateTotal/calculateTotal";
 import { useNike } from "../../../hooks/hooksBrand/useNike";
+import type { CartItem } from "../../../types/cart";
 
 import DropdownN from "../../../components/dropdownPlayer/DropdownNike/DropdownN";
 import pict1 from "../../../assets/homeAssets/nikeBrazil/pict1.webp";
@@ -9,7 +10,18 @@ import pict3 from "../../../assets/homeAssets/nikeBrazil/pict3.webp";
 import pict4 from "../../../assets/homeAssets/nikeBrazil/pict4.webp";
 import pict5 from "../../../assets/homeAssets/nikeBrazil/pict5.webp";
 
-function HomeNike() {
+type HomeNikeProps = {
+  setCart: React.Dispatch<React.SetStateAction<CartItem[]>>;
+};
+
+function HomeNike({ setCart }: HomeNikeProps) {
+  const nikeProduct = {
+    id: "nike-1",
+    name: "Nike Apparel Brazil World Cup Home Kit 2026",
+    image: pict1,
+    price: 250,
+  };
+
   const {
     activeSize,
     activeKit,
@@ -21,8 +33,38 @@ function HomeNike() {
     setCustomNum,
   } = useNike();
 
-  const basePrice = 250;
+  // Logika menambahkan produk ke keranjang (cart)
+  const addToCart = () => {
+    setCart((prevCart) => {
+      // Variable mencari item spesifik id sama dalam cart
+      const existingItem = prevCart.find((item) => item.id === nikeProduct.id && item.size === activeSize);
 
+      // Jika ketemu, maka quantitas + 1
+      if (existingItem) {
+        return prevCart.map((item) =>
+          item.id === nikeProduct.id && item.size === activeSize
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+              }
+            : item,
+        );
+      }
+
+      // Jika tidak memenuhi, maka produk ditambahkan dengan quantitas awal 1
+      return [
+        ...prevCart,
+        {
+          ...nikeProduct,
+          size: activeSize,
+          quantity: 1,
+        },
+      ];
+    });
+    alert("Produk ditambahkan");
+  };
+
+  const basePrice = nikeProduct.price;
   const additionalPrice = getAdditionalPrice(activeNumName);
   const totalPrice = getTotalPrice(basePrice, additionalPrice);
 
@@ -64,7 +106,9 @@ function HomeNike() {
 
       <div className="w-150 h-180 px-10 flex flex-col">
         <div className="font-bold">
-          <h1 className="text-3xl my-5">Nike Apparel Brazil World Cup Home Kit 2026</h1>
+          <h1 className="text-3xl my-5">
+            Nike Apparel Brazil World Cup Home Kit 2026
+          </h1>
           <h3 className="text-xl">$ {totalPrice}</h3>
         </div>
 
@@ -216,7 +260,10 @@ function HomeNike() {
             <h1>Total</h1>
             <h1>$ {totalPrice}</h1>
           </div>
-          <button className="flex justify-center items-center mt-5 bg-blue-500 text-white h-15 w-full rounded-2xl transition duration-300 hover:cursor-pointer hover:bg-blue-950">
+          <button
+            onClick={addToCart}
+            className="flex justify-center items-center mt-5 bg-blue-500 text-white h-15 w-full rounded-2xl transition duration-300 hover:cursor-pointer hover:bg-blue-950"
+          >
             Add to cart
           </button>
         </div>

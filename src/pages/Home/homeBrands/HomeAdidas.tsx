@@ -1,6 +1,7 @@
 import { getAdditionalPrice } from "../../../utils/additionalPrice/additionalPrice";
 import { getTotalPrice } from "../../../utils/calculateTotal/calculateTotal";
 import { useAdidas } from "../../../hooks/hooksBrand/useAdidas";
+import type { CartItem } from "../../../types/cart";
 
 import DropdownA from "../../../components/dropdownPlayer/DropdownAdidas/DropdownA";
 import pict1 from "../../../assets/homeAssets/adidasEspana/pict1.webp";
@@ -9,7 +10,18 @@ import pict3 from "../../../assets/homeAssets/adidasEspana/pict3.webp";
 import pict4 from "../../../assets/homeAssets/adidasEspana/pict4.webp";
 import pict5 from "../../../assets/homeAssets/adidasEspana/pict5.webp";
 
-function HomeAdidas() {
+type HomeAdidasProps = {
+  setCart: React.Dispatch<React.SetStateAction<CartItem[]>>;
+};
+
+function HomeAdidas({ setCart }: HomeAdidasProps) {
+  const adidasProduct = {
+    id: "adidas-1",
+    name: "Adidas Apparel Spanish Home Kit World Cup 2026",
+    image: pict1,
+    price: 270,
+  };
+
   const {
     activeSize,
     activeKit,
@@ -21,8 +33,40 @@ function HomeAdidas() {
     setCustomNum,
   } = useAdidas();
 
-  const basePrice = 270;
+  // Logika menambahkan produk ke keranjang (cart)
+  const addToCart = () => {
+    setCart((prevCart) => {
+      // Variable mencari item spesifik id sama dalam cart
+      const existingItem = prevCart.find(
+        (item) => item.id === adidasProduct.id && item.size === activeSize
+      );
 
+      // Jika ketemu, maka quantitas + 1
+      if (existingItem) {
+        return prevCart.map((item) =>
+          item.id === adidasProduct.id && item.size === activeSize
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+              }
+            : item,
+        );
+      }
+
+      // Jika tidak memenuhi, maka produk ditambahkan dengan quantitas awal 1
+      return [
+        ...prevCart,
+        {
+          ...adidasProduct,
+          size: activeSize,
+          quantity: 1,
+        },
+      ];
+    });
+    alert("Produk ditambahkan");
+  };
+
+  const basePrice = adidasProduct.price;
   const additionalPrice = getAdditionalPrice(activeNumName);
   const totalPrice = getTotalPrice(basePrice, additionalPrice);
 
@@ -218,7 +262,10 @@ function HomeAdidas() {
             <h1>Total</h1>
             <h1>$ {totalPrice}</h1>
           </div>
-          <button className="flex justify-center items-center mt-5 bg-blue-500 text-white h-15 w-full rounded-2xl transition duration-300 hover:cursor-pointer hover:bg-blue-950">
+          <button
+            onClick={addToCart}
+            className="flex justify-center items-center mt-5 bg-blue-500 text-white h-15 w-full rounded-2xl transition duration-300 hover:cursor-pointer hover:bg-blue-950"
+          >
             Add to cart
           </button>
         </div>

@@ -1,4 +1,5 @@
 import { useHome } from "../../hooks/useHome";
+import type { CartItem } from "../../types/cart"
 
 import Categories from "../../components/categories/Categories";
 import HomeAdidas from "./homeBrands/HomeAdidas";
@@ -7,7 +8,11 @@ import HomePuma from "./homeBrands/HomePuma";
 
 import mainBG from "../../assets/homeAssets/mainBG.webp";
 
-function Home() {
+type HomeProps = {
+  setCart: React.Dispatch<React.SetStateAction<CartItem[]>>;
+};
+
+function Home({ setCart }: HomeProps) {
   const { active, activeBrand, setActive, setActiveBrand } = useHome();
 
   return (
@@ -190,9 +195,11 @@ function Home() {
       </div>
 
       <div>
-        {activeBrand === "Adidas" && <HomeAdidas />}
-        {activeBrand === "Nike" && <HomeNike />}
-        {activeBrand === "Puma" && <HomePuma />}
+        {activeBrand === "Adidas" && (
+          <HomeAdidas setCart={setCart} />
+        )}
+        {activeBrand === "Nike" && <HomeNike setCart={setCart} />}
+        {activeBrand === "Puma" && <HomePuma setCart={setCart} />}
       </div>
     </div>
   );

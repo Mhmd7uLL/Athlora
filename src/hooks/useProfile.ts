@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export function useProfile() {
-  const [active, setActive] = useState("dashboard");
+  const [active, setActive] = useState("Dashboard");
 
   return {
     active,

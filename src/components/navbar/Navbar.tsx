@@ -27,9 +27,9 @@ function Navbar() {
           <Link to="/profile">
             <img src={profile} className="w-6 h-6"></img>
           </Link>
-          <a href="/cart">
+          <Link to="/cart">
             <img src={cart} className="w-6 h-6"></img>
-          </a>
+          </Link>
         </div>
       </div>
     </nav>

@@ -1,6 +1,7 @@
 import { getAdditionalPrice } from "../../../utils/additionalPrice/additionalPrice";
 import { getTotalPrice } from "../../../utils/calculateTotal/calculateTotal";
 import { usePuma } from "../../../hooks/hooksBrand/usePuma";
+import type { CartItem } from "../../../types/cart";
 
 import DropdownP from "../../../components/dropdownPlayer/DropdownPuma/DropdownP";
 import pict1 from "../../../assets/homeAssets/pumaPortugal/pict1.jpg";
@@ -9,7 +10,18 @@ import pict3 from "../../../assets/homeAssets/pumaPortugal/pict3.webp";
 import pict4 from "../../../assets/homeAssets/pumaPortugal/pict4.webp";
 import pict5 from "../../../assets/homeAssets/pumaPortugal/pict5.webp";
 
-function HomePuma() {
+type HomePumaProps = {
+  setCart: React.Dispatch<React.SetStateAction<CartItem[]>>;
+};
+
+function HomePuma({ setCart }: HomePumaProps) {
+  const pumaProduct = {
+    id: "puma-1",
+    name: "Puma Apparel Portugal Home Kit World Cup 2026",
+    image: pict1,
+    price: 265,
+  };
+
   const {
     activeSize,
     activeKit,
@@ -21,8 +33,38 @@ function HomePuma() {
     setCustomNum,
   } = usePuma();
 
-  const basePrice = 265;
+  // Logika menambahkan produk ke keranjang (cart)
+  const addToCart = () => {
+    setCart((prevCart) => {
+      // Variable mencari item spesifik id sama dalam cart
+      const existingItem = prevCart.find((item) => item.id === pumaProduct.id && item.size === activeSize);
 
+      // Jika ketemu, maka quantitas + 1
+      if (existingItem) {
+        return prevCart.map((item) =>
+          item.id === pumaProduct.id && item.size === activeSize
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+              }
+            : item,
+        );
+      }
+
+      // Jika tidak memenuhi, maka produk ditambahkan dengan quantitas awal 1
+      return [
+        ...prevCart,
+        {
+          ...pumaProduct,
+          size: activeSize,
+          quantity: 1,
+        },
+      ];
+    });
+    alert("Produk ditambahkan");
+  };
+
+  const basePrice = pumaProduct.price;
   const additionalPrice = getAdditionalPrice(activeNumName);
   const totalPrice = getTotalPrice(basePrice, additionalPrice);
 
@@ -218,7 +260,10 @@ function HomePuma() {
             <h1>Total</h1>
             <h1>$ {totalPrice}</h1>
           </div>
-          <button className="flex justify-center items-center mt-5 bg-blue-500 text-white h-15 w-full rounded-2xl transition duration-300 hover:cursor-pointer hover:bg-blue-950">
+          <button
+            onClick={addToCart}
+            className="flex justify-center items-center mt-5 bg-blue-500 text-white h-15 w-full rounded-2xl transition duration-300 hover:cursor-pointer hover:bg-blue-950"
+          >
             Add to cart
           </button>
         </div>

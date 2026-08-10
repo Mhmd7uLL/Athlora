@@ -1,69 +1,100 @@
-import { useState } from "react";
-import pict1 from "../../assets/homeAssets/adidasEspana/pict1.webp";
+import type { CartItem, Size } from "../../types/cart"
 
-function Cart() {
-  const [quantity, setQuantity] = useState(1);
+type CartProps = {
+  cart: CartItem[];
+  setCart: React.Dispatch<React.SetStateAction<CartItem[]>>;
+};
 
-  const price = 270;
-  const subTotal = price * quantity;
+function Cart({ cart, setCart }: CartProps) {
+  const orderSubtotal = cart.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0,
+  );
+
+  const increaseQuantity = (id: string, size: Size) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === id && item.size === size
+          ? {
+              ...item,
+              quantity: item.quantity + 1,
+            }
+          : item,
+      ),
+    );
+  };
+
+  const decreaseQuantity = (id: string, size: Size) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === id && item.size === size
+          ? {
+              ...item,
+              quantity: item.quantity - 1,
+            }
+          : item,
+      )
+      .filter((item) => item.quantity > 0)
+    );
+  };
 
   return (
     <div className="flex justify-center">
       <div className="w-295">
-        <h1 className="text-4xl font-bold">All your stuff is here...</h1>
+        <h1 className="text-4xl font-extrathin">All your stuff is here...</h1>
 
         <div className="flex justify-between gap-3 mt-8">
           <div className="w-190 h-150">
-            <div className="grid grid-cols-4">
-              <div className="font-medium text-2xl py-2">Your Stuff(s)</div>
-              <div className="text-center font-medium text-2xl py-2">Price</div>
-              <div className="text-center font-medium text-2xl py-2">
-                Quantity(s)
-              </div>
-              <div className="text-end font-medium text-2xl py-2">Subtotal</div>
-            </div>
-            <hr className="mb-3 w-full"></hr>
-            <div className="grid grid-cols-4 font-medium">
-              <div className="flex gap-3 text-start">
-                <img src={pict1} className="w-15 h-15 rounded-lg"></img>
-                <div>
-                  <h1>SPAIN FINAL WORLD CUP JERSEY, L</h1>
+            {cart.map((item) => {
+              const subTotal = item.price * item.quantity;
+              return (
+                <div key={item.id} className="grid grid-cols-4 font-extrathin">
+                  <div className="flex gap-3 text-start">
+                    <img src={item.image} className="w-15 h-15 rounded-lg" />
+
+                    <div>
+                      <h1>{item.name}, {item.size}</h1>
+                    </div>
+                  </div>
+
+                  <div className="text-center">
+                    <p>${item.price}</p>
+                  </div>
+
+                  <div className="gap-3">
+                    <form className="flex flex-row justify-center">
+                      <button
+                        onClick={() => decreaseQuantity(item.id, item.size)}
+                        type="button"
+                        className="rounded-md bg-blue-500 w-5 h-5 flex items-center justify-center text-white hover:cursor-pointer"
+                      >
+                        -
+                      </button>
+
+                      <input
+                        type="text"
+                        value={item.quantity}
+                        readOnly
+                        className="w-5 h-5 text-center mx-3"
+                      />
+
+                      <button
+                        onClick={() => increaseQuantity(item.id, item.size)}
+                        type="button"
+                        className="rounded-md bg-blue-500 w-5 h-5 flex items-center justify-center text-white hover:cursor-pointer"
+                      >
+                        +
+                      </button>
+                    </form>
+                  </div>
+
+                  <div className="text-end">${subTotal}</div>
                 </div>
-              </div>
-              <div className="text-center">
-                <p>${price}</p>
-              </div>
-              <div className="gap-3">
-                <form className="flex flex-row justify-center">
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setQuantity((quantity) => Math.max(1, quantity - 1))
-                    }
-                    className="rounded-md bg-blue-500 w-5 h-5 flex items-center justify-center text-white hover:cursor-pointer"
-                  >
-                    -
-                  </button>
-                  <input
-                    type="text"
-                    value={quantity}
-                    readOnly
-                    className="w-5 h-5 text-center mx-3"
-                  ></input>
-                  <button
-                    type="button"
-                    onClick={() => setQuantity((quantity) => quantity + 1)}
-                    className="rounded-md bg-blue-500 w-5 h-5 flex items-center justify-center text-white hover:cursor-pointer"
-                  >
-                    +
-                  </button>
-                </form>
-              </div>
-              <div className="text-end">${subTotal}</div>
-            </div>
+              );
+            })}
             <div className="flex flex-row justify-between w-full my-5 py-3 border-y-1 font-medium text-lg">
               <h1>ORDER SUBTOTAL</h1>
-              <h1>$ {subTotal}</h1>
+              <h1>$ {orderSubtotal}</h1>
             </div>
           </div>
 
@@ -73,7 +104,7 @@ function Cart() {
               <hr className="mb-3"></hr>
               <div className="grid grid-cols-2 mt-5 text-gray-500 font-extralight">
                 <div>Order Subtotal</div>
-                <div className="text-end">$ {subTotal}</div>
+                <div className="text-end">$ {orderSubtotal}</div>
                 <div>Shipping</div>
                 <div className="text-end">$ 0.00</div>
                 <div>Sales Tax</div>
@@ -82,7 +113,7 @@ function Cart() {
               <hr className="bg-gray-100"></hr>
               <div className="flex flex-row justify-between mt-5 font-semibold text-lg">
                 <h1>ESTIMATED TOTAL</h1>
-                <h1>$ {subTotal}</h1>
+                <h1>$ {orderSubtotal}</h1>
               </div>
             </div>
             <button className="bg-blue-500 font-medium w-full mt-5 py-3 rounded-lg text-white hover:bg-blue-950 hover:cursor-pointer transition duration-300">

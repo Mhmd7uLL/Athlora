@@ -39,11 +39,10 @@ function Cart({ cart, setCart }: CartProps) {
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center bg-gray-200">
       <div className="w-295">
-        <h1 className="text-4xl font-extrathin">All your stuff is here...</h1>
-
-        <div className="flex justify-between gap-3 mt-8">
+        <h1 className="text-4xl font-extrathin mt-10">All your stuff is here...</h1>
+        <div className="flex justify-between gap-3">
           <div className="w-190 h-150">
             {cart.map((item) => {
               const subTotal = item.price * item.quantity;
@@ -99,8 +98,8 @@ function Cart({ cart, setCart }: CartProps) {
           </div>
 
           <div className="w-80 h-150">
-            <div className="bg-blue-100 px-5 pb-5">
-              <h1 className="text-2xl py-2 font-medium">ORDER SUMMARY</h1>
+            <div className="bg-white px-5 pb-5">
+              <h1 className="text-2xl py-2 mt-4 font-medium">ORDER SUMMARY</h1>
               <hr className="mb-3"></hr>
               <div className="grid grid-cols-2 mt-5 text-gray-500 font-extralight">
                 <div>Order Subtotal</div>

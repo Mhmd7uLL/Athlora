@@ -55,7 +55,7 @@ function PopUpOrderDetail({ onClose }: PopUpOrderDetailProps) {
 
         <button
           onClick={onClose}
-          className="mt-5 w-full rounded-lg bg-blue-950 py-2 text-white hover:bg-blue-800"
+          className="mt-5 w-full rounded-lg bg-blue-500 py-2 text-white hover:bg-blue-950"
         >
           Close
         </button>

@@ -1,4 +1,4 @@
-import type { CartItem, Size } from "../../types/cart"
+import type { CartItem, Size } from "../../types/cart";
 
 type CartProps = {
   cart: CartItem[];
@@ -26,33 +26,45 @@ function Cart({ cart, setCart }: CartProps) {
 
   const decreaseQuantity = (id: string, size: Size) => {
     setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.id === id && item.size === size
-          ? {
-              ...item,
-              quantity: item.quantity - 1,
-            }
-          : item,
-      )
-      .filter((item) => item.quantity > 0)
+      prevCart
+        .map((item) =>
+          item.id === id && item.size === size
+            ? {
+                ...item,
+                quantity: item.quantity - 1,
+              }
+            : item,
+        )
+        .filter((item) => item.quantity > 0),
     );
   };
 
   return (
     <div className="flex justify-center bg-gray-200">
       <div className="w-295">
-        <h1 className="text-4xl font-extrathin mt-10">All your stuff is here...</h1>
+        <h1 className="text-4xl font-extrathin mt-10">
+          All your stuff is here...
+        </h1>
         <div className="flex justify-between gap-3">
           <div className="w-190 h-150">
+            <div className="grid grid-cols-4 text-lg font-medium mt-4">
+              <div>Your Stuff(s)</div>
+              <div className="text-center">Price</div>
+              <div className="text-center">Quantity</div>
+              <div className="text-end">Subtotal</div>
+            </div>
+            <hr className="mt-2"></hr>
             {cart.map((item) => {
               const subTotal = item.price * item.quantity;
               return (
-                <div key={item.id} className="grid grid-cols-4 font-extrathin">
+                <div key={item.id} className="grid grid-cols-4 font-extrathin mt-3">
                   <div className="flex gap-3 text-start">
                     <img src={item.image} className="w-15 h-15 rounded-lg" />
 
-                    <div>
-                      <h1>{item.name}, {item.size}</h1>
+                    <div className="mb-2">
+                      <h1>
+                        {item.name}, {item.size}
+                      </h1>
                     </div>
                   </div>
 
@@ -88,10 +100,11 @@ function Cart({ cart, setCart }: CartProps) {
                   </div>
 
                   <div className="text-end">${subTotal}</div>
+                  <hr className="w-190"></hr>
                 </div>
               );
             })}
-            <div className="flex flex-row justify-between w-full my-5 py-3 border-y-1 font-medium text-lg">
+            <div className="flex flex-row border-b-1 justify-between w-full mb-5 py-3 font-medium text-lg">
               <h1>ORDER SUBTOTAL</h1>
               <h1>$ {orderSubtotal}</h1>
             </div>

@@ -23,7 +23,7 @@ function Dashboard() {
             className={`relative z-10 text-center py-2 px-3 border hover:cursor-pointer rounded-lg ${
               activeTab === "totalOrder"
                 ? "bg-blue-500 text-white"
-                : "border-blue-500 hover:bg-blue-500"
+                : "border-blue-500 hover:bg-blue-500 hover:text-white"
             }`}
           >
             Orders
@@ -33,7 +33,7 @@ function Dashboard() {
             className={`relative z-10 text-center py-2 px-3 border hover:cursor-pointer rounded-lg ${
               activeTab === "pending"
                 ? "bg-blue-500 text-white"
-                : "border-blue-500 hover:bg-blue-500"
+                : "border-blue-500 hover:bg-blue-500 hover:text-white"
             }`}
           >
             Pending
@@ -43,7 +43,7 @@ function Dashboard() {
             className={`relative z-10 text-center py-2 px-3 border hover:cursor-pointer rounded-lg ${
               activeTab === "completed"
                 ? "bg-blue-500 text-white"
-                : "border-blue-500 hover:bg-blue-500"
+                : "border-blue-500 hover:bg-blue-500 hover:text-white"
             }`}
           >
             Completed
@@ -53,7 +53,7 @@ function Dashboard() {
             className={`relative z-10 text-center py-2 px-3 border hover:cursor-pointer rounded-lg ${
               activeTab === "review"
                 ? "bg-blue-500 text-white"
-                : "border-blue-500 hover:bg-blue-500"
+                : "border-blue-500 hover:bg-blue-500 hover:text-white"
             }`}
           >
             Reviewed
@@ -61,28 +61,28 @@ function Dashboard() {
         </div>
         <div className="mt-3">
           {activeTab === "totalOrder" && (
-            <div className="bg-blue-950 w-60 px-5 py-3 rounded-lg text-white">
+            <div className="bg-white w-60 px-5 py-3 rounded-lg shadow-xl">
               <h1>Total Orders</h1>
               <hr className="my-2"></hr>
               <p>24</p>
             </div>
           )}
           {activeTab === "pending" && (
-            <div className="bg-blue-950 w-60 px-5 py-3 rounded-lg text-white">
+            <div className="bg-white w-60 px-5 py-3 rounded-lg shadow-xl">
               <h1>Pending Orders</h1>
               <hr className="my-2"></hr>
               <p>2</p>
             </div>
           )}
           {activeTab === "completed" && (
-            <div className="bg-blue-950 w-60 px-5 py-3 rounded-lg text-white">
+            <div className="bg-white w-60 px-5 py-3 rounded-lg shadow-xl">
               <h1>Complete Orders</h1>
               <hr className="my-2"></hr>
               <p>12</p>
             </div>
           )}
           {activeTab === "review" && (
-            <div className="bg-blue-950 w-60 px-5 py-3 rounded-lg text-white">
+            <div className="bg-white w-60 px-5 py-3 rounded-lg shadow-xl">
               <h1>Reviewed</h1>
               <hr className="my-2"></hr>
               <p>5</p>
@@ -93,8 +93,8 @@ function Dashboard() {
       <div className="my-5">
         <h1 className="text-xl font-medium mb-3">Recent Order(s)</h1>
         <div className="mt-3">
-          <div className="flex flex-row gap-3 bg-blue-950 w-100 px-5 py-3 rounded-lg text-white">
-            <img src={pict} className="w-20 h-20"></img>
+          <div className="flex flex-row gap-3 bg-white w-100 px-5 py-3 rounded-lg shadow-xl">
+            <img src={pict} className="w-30 h-35 rounded-lg"></img>
             <div>
               <h1>Last Order</h1>
               <hr className="my-2"></hr>

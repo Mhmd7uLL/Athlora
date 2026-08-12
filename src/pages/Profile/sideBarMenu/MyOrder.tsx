@@ -12,11 +12,6 @@ function MyOrder() {
         <h1>My Order</h1>
         <hr></hr>
       </div>
-      <div className="mt-4">
-        <h1>
-          Welcome, Theoo!<br></br>Here's what happening with your account
-        </h1>
-      </div>
       <div className="my-5">
         <h1 className="text-xl font-medium mb-3">
           All Your Orders Detail is here
@@ -27,7 +22,7 @@ function MyOrder() {
             className={`relative z-10 text-center py-2 px-3 border hover:cursor-pointer rounded-lg ${
               activeTab === "all"
                 ? "bg-blue-500 text-white"
-                : "border-blue-500 hover:bg-blue-500"
+                : "border-blue-500 hover:bg-blue-500 hover:text-white"
             }`}
           >
             All
@@ -37,7 +32,7 @@ function MyOrder() {
             className={`relative z-10 text-center py-2 px-3 border hover:cursor-pointer rounded-lg ${
               activeTab === "pack"
                 ? "bg-blue-500 text-white"
-                : "border-blue-500 hover:bg-blue-500"
+                : "border-blue-500 hover:bg-blue-500 hover:text-white"
             }`}
           >
             Packing
@@ -47,7 +42,7 @@ function MyOrder() {
             className={`relative z-10 text-center py-2 px-3 border hover:cursor-pointer rounded-lg ${
               activeTab === "ship"
                 ? "bg-blue-500 text-white"
-                : "border-blue-500 hover:bg-blue-500"
+                : "border-blue-500 hover:bg-blue-500 hover:text-white"
             }`}
           >
             Shipping
@@ -57,7 +52,7 @@ function MyOrder() {
             className={`relative z-10 text-center py-2 px-3 border hover:cursor-pointer rounded-lg ${
               activeTab === "deliver"
                 ? "bg-blue-500 text-white"
-                : "border-blue-500 hover:bg-blue-500"
+                : "border-blue-500 hover:bg-blue-500 hover:text-white"
             }`}
           >
             Delivering
@@ -67,7 +62,7 @@ function MyOrder() {
             className={`relative z-10 text-center py-2 px-3 border hover:cursor-pointer rounded-lg ${
               activeTab === "cancel"
                 ? "bg-blue-500 text-white"
-                : "border-blue-500 hover:bg-blue-500"
+                : "border-blue-500 hover:bg-blue-500 hover:text-white"
             }`}
           >
             Cancelled
@@ -75,7 +70,7 @@ function MyOrder() {
         </div>
         <div className="mt-3">
           {activeTab === "all" && (
-            <div className="bg-blue-950 w-100 px-5 py-3 rounded-lg text-white">
+            <div className="bg-white w-100 px-5 py-3 rounded-lg shadow-xl">
               <div className="flex flex-row justify-between">
                 <h1>All Orders</h1>
                 <h1>Aug 12, 2026</h1>
@@ -96,7 +91,7 @@ function MyOrder() {
               <div className="flex flex-row justify-between">
                 <button
                   onClick={() => setShowDetail(true)}
-                  className="hover:cursor-pointer hover:text-blue-500"
+                  className="bg-blue-500 py-2 px-3 rounded-lg text-white hover:cursor-pointer hover:bg-blue-950 transition duration-300"
                 >
                   More Detail
                 </button>
@@ -104,7 +99,7 @@ function MyOrder() {
             </div>
           )}
           {activeTab === "pack" && (
-            <div className="bg-blue-950 w-100 px-5 py-3 rounded-lg text-white">
+            <div className="bg-white w-100 px-5 py-3 rounded-lg">
               <div className="flex flex-row justify-between">
                 <h1>All Orders</h1>
                 <h1>Aug 12, 2026</h1>
@@ -125,7 +120,7 @@ function MyOrder() {
               <div className="flex flex-row justify-between">
                 <button
                   onClick={() => setShowDetail(true)}
-                  className="hover:cursor-pointer hover:text-blue-500"
+                  className="bg-blue-500 py-2 px-3 rounded-lg text-white hover:cursor-pointer hover:bg-blue-950 transition duration-300"
                 >
                   More Detail
                 </button>

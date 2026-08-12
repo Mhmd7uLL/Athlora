@@ -1,6 +1,6 @@
 # Athlora
 
-Athlora (Athletic Lifestyle and Original Apparel) adalah toko pakaian olahraga modern yang menjual jersey tim, training suit (tracktop & jogger), dan item fashion sport lainnya. Proyek ini adalah template front-end berbasis React + TypeScript yang menampilkan katalog produk dan antarmuka belanja sederhana sebagai basis untuk dikembangkan menjadi e‑commerce lengkap.
+Athlora (Athletic Lifestyle and Original Apparel) adalah toko pakaian olahraga modern yang menjual jersey tim sepak bola
 
 ## Fitur utama
 - Pengenalan produk: Jersey tim sepak bola (saat ini)

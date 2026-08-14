@@ -11,10 +11,20 @@ function Cart({ cart, setCart }: CartProps) {
     0,
   );
 
-  const increaseQuantity = (id: string, size: Size) => {
+  const increaseQuantity = (
+    id: string,
+    size: Size,
+    player: string,
+    customNum: number | "",
+    customName: string,
+  ) => {
     setCart((prevCart) =>
       prevCart.map((item) =>
-        item.id === id && item.size === size
+        item.id === id &&
+        item.size === size &&
+        item.player === player &&
+        item.customNum === customNum &&
+        item.customName === customName
           ? {
               ...item,
               quantity: item.quantity + 1,
@@ -24,11 +34,21 @@ function Cart({ cart, setCart }: CartProps) {
     );
   };
 
-  const decreaseQuantity = (id: string, size: Size) => {
+  const decreaseQuantity = (
+    id: string,
+    size: Size,
+    player: string,
+    customNum: number | "",
+    customName: string,
+  ) => {
     setCart((prevCart) =>
       prevCart
         .map((item) =>
-          item.id === id && item.size === size
+          item.id === id &&
+          item.size === size &&
+          item.player === player &&
+          item.customNum === customNum &&
+          item.customName === customName
             ? {
                 ...item,
                 quantity: item.quantity - 1,
@@ -57,25 +77,58 @@ function Cart({ cart, setCart }: CartProps) {
             {cart.map((item) => {
               const subTotal = item.price * item.quantity;
               return (
-                <div key={item.id} className="grid grid-cols-4 font-extrathin mt-3">
+                <div
+                  key={item.id}
+                  className="grid grid-cols-4 font-extrathin mt-3"
+                >
                   <div className="flex gap-3 text-start">
                     <img src={item.image} className="w-15 h-15 rounded-lg" />
 
-                    <div className="mb-2">
+                    <div className="mb-2 text-sm">
+                      <h1>{item.name}</h1>
                       <h1>
-                        {item.name}, {item.size}
+                        <span className="font-medium">Size</span> : {item.size}
                       </h1>
+
+                      {item.player !== "Select Player" && (
+                        <h1>
+                          <span className="font-medium">Edition</span> :{" "}
+                          {item.player}
+                        </h1>
+                      )}
+
+                      {item.customNum !== "" && (
+                        <h1>
+                          <span className="font-medium">Number</span> :{" "}
+                          {item.customNum}
+                        </h1>
+                      )}
+
+                      {item.customName && (
+                        <h1>
+                          <span className="font-medium">Name</span> :{" "}
+                          {item.customName}
+                        </h1>
+                      )}
                     </div>
                   </div>
 
-                  <div className="text-center">
+                  <div className="text-center font-medium">
                     <p>${item.price}</p>
                   </div>
 
                   <div className="gap-3">
                     <form className="flex flex-row justify-center">
                       <button
-                        onClick={() => decreaseQuantity(item.id, item.size)}
+                        onClick={() =>
+                          decreaseQuantity(
+                            item.id,
+                            item.size,
+                            item.player,
+                            item.customNum,
+                            item.customName,
+                          )
+                        }
                         type="button"
                         className="rounded-md bg-blue-500 w-5 h-5 flex items-center justify-center text-white hover:cursor-pointer"
                       >
@@ -90,7 +143,15 @@ function Cart({ cart, setCart }: CartProps) {
                       />
 
                       <button
-                        onClick={() => increaseQuantity(item.id, item.size)}
+                        onClick={() =>
+                          increaseQuantity(
+                            item.id,
+                            item.size,
+                            item.player,
+                            item.customNum,
+                            item.customName,
+                          )
+                        }
                         type="button"
                         className="rounded-md bg-blue-500 w-5 h-5 flex items-center justify-center text-white hover:cursor-pointer"
                       >
@@ -99,7 +160,7 @@ function Cart({ cart, setCart }: CartProps) {
                     </form>
                   </div>
 
-                  <div className="text-end">${subTotal}</div>
+                  <div className="text-end font-medium">${subTotal}</div>
                   <hr className="w-190"></hr>
                 </div>
               );

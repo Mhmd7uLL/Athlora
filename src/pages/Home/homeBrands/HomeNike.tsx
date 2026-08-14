@@ -3,7 +3,7 @@ import { getTotalPrice } from "../../../utils/calculateTotal/calculateTotal";
 import { useNike } from "../../../hooks/hooksBrand/useNike";
 import type { CartItem } from "../../../types/cart";
 
-import DropdownN from "../../../components/dropdownPlayer/DropdownNike/DropdownN";
+import DropdownN from "../../../components/dropdownPlayer/DropdownN";
 import pict1 from "../../../assets/homeAssets/nikeBrazil/pict1.webp";
 import pict2 from "../../../assets/homeAssets/nikeBrazil/pict2.webp";
 import pict3 from "../../../assets/homeAssets/nikeBrazil/pict3.webp";
@@ -27,22 +27,42 @@ function HomeNike({ setCart }: HomeNikeProps) {
     activeKit,
     activeNumName,
     customNum,
+    customName,
+    selectedPlayer,
     setActiveSize,
     setActiveKit,
     setActiveNumName,
     setCustomNum,
+    setCustomName,
+    setSelectedPlayer,
   } = useNike();
 
   // Logika menambahkan produk ke keranjang (cart)
   const addToCart = () => {
+    const cartPlayer =
+      activeNumName === "Player" ? selectedPlayer : "Select Player";
+    const cartCustomNum = activeNumName === "Custom" ? customNum : "";
+    const cartCustomName = activeNumName === "Custom" ? customName : "";
+
     setCart((prevCart) => {
       // Variable mencari item spesifik id sama dalam cart
-      const existingItem = prevCart.find((item) => item.id === nikeProduct.id && item.size === activeSize);
+      const existingItem = prevCart.find(
+        (item) => 
+          item.id === nikeProduct.id && 
+          item.size === activeSize && 
+          item.player === cartPlayer && 
+          item.customName === cartCustomName &&
+          item.customNum === cartCustomNum,
+      );
 
       // Jika ketemu, maka quantitas + 1
       if (existingItem) {
         return prevCart.map((item) =>
-          item.id === nikeProduct.id && item.size === activeSize
+          item.id === nikeProduct.id && 
+          item.size === activeSize &&
+          item.player === cartPlayer && 
+          item.customName === cartCustomName &&
+          item.customNum === cartCustomNum
             ? {
                 ...item,
                 quantity: item.quantity + 1,
@@ -57,6 +77,10 @@ function HomeNike({ setCart }: HomeNikeProps) {
         {
           ...nikeProduct,
           size: activeSize,
+          player: cartPlayer,
+          customName: cartCustomName,
+          customNum: cartCustomNum,
+          price: totalPrice,
           quantity: 1,
         },
       ];
@@ -65,7 +89,11 @@ function HomeNike({ setCart }: HomeNikeProps) {
   };
 
   const basePrice = nikeProduct.price;
-  const additionalPrice = getAdditionalPrice(activeNumName);
+  const additionalPrice = getAdditionalPrice(
+    activeNumName,
+    customNum,
+    customName,
+  );
   const totalPrice = getTotalPrice(basePrice, additionalPrice);
 
   return (
@@ -212,7 +240,7 @@ function HomeNike({ setCart }: HomeNikeProps) {
         </div>
 
         <div>
-          {activeNumName === "Player" && <DropdownN />}
+          {activeNumName === "Player" && <DropdownN selectedPlayer={selectedPlayer} setSelectedPlayer={setSelectedPlayer} />}
           {activeNumName === "Custom" && (
             <div className="flex flex-col gap-3">
               <div>
@@ -246,6 +274,10 @@ function HomeNike({ setCart }: HomeNikeProps) {
                   <label>Custom Name + $20 Additional Price</label>
                   <br></br>
                   <input
+                    type="text"
+                    value={customName}
+                    onChange={(e) => setCustomName(e.target.value)}
+                    maxLength={15}
                     placeholder="Input Name"
                     className="bg-gray-200 w-100 px-5 py-3 rounded-xl border border-blue-500 font-medium"
                   />

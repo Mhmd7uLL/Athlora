@@ -6,5 +6,8 @@ export type CartItem = {
   image: string;
   price: number;
   size: Size;
+  player: string;
+  customNum: number | "";
+  customName: string;
   quantity: number;
 };

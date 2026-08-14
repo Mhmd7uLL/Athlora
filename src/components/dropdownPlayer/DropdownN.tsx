@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { Info } from "lucide-react";
 
-function DropdownN() {
+interface DropdownNProps {
+  selectedPlayer: string;
+  setSelectedPlayer: React.Dispatch<React.SetStateAction<string>>;
+}
+
+function DropdownN({ selectedPlayer, setSelectedPlayer}: DropdownNProps) {
   const [open, setOpen] = useState(false);
-  const [activePlayers, setActivePlayers] = useState("Select Player");
 
   const players = [
     "Alisson, 1",
@@ -40,7 +44,7 @@ function DropdownN() {
         onClick={() => setOpen(!open)}
         className="flex w-full justify-between bg-gray-300 rounded-3xl border border-gray-300 px-4 py-4 hover:border-blue-500"
       >
-        {activePlayers}
+        {selectedPlayer}
         <span>⌄</span>
       </button>
       <div className="flex flex-row gap-3 items-center py-2">
@@ -56,7 +60,7 @@ function DropdownN() {
             <button
               key={player}
               onClick={() => {
-                setActivePlayers(player);
+                setSelectedPlayer(player);
                 setOpen(false);
               }}
               className="block w-full px-4 py-2 text-left hover:bg-gray-100"

@@ -8,15 +8,21 @@ export function useNike() {
   const [activeKit, setActiveKit] = useState(pict1);
   const [customNum, setCustomNum] = useState<number | "">("");
   const [activeNumName, setActiveNumName] = useState<NumNameOption>("None");
+  const [selectedPlayer, setSelectedPlayer] = useState("Select Player");
+  const [customName, setCustomName] = useState("");
 
   return {
     activeSize,
     activeKit,
     activeNumName,
     customNum,
+    customName,
+    selectedPlayer,
     setActiveSize,
     setActiveKit,
     setActiveNumName,
     setCustomNum,
+    setCustomName,
+    setSelectedPlayer,
   };
 }

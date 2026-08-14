@@ -3,7 +3,7 @@ import { getTotalPrice } from "../../../utils/calculateTotal/calculateTotal";
 import { useAdidas } from "../../../hooks/hooksBrand/useAdidas";
 import type { CartItem } from "../../../types/cart";
 
-import DropdownA from "../../../components/dropdownPlayer/DropdownAdidas/DropdownA";
+import DropdownA from "../../../components/dropdownPlayer/DropdownA";
 import pict1 from "../../../assets/homeAssets/adidasEspana/pict1.webp";
 import pict2 from "../../../assets/homeAssets/adidasEspana/pict2.webp";
 import pict3 from "../../../assets/homeAssets/adidasEspana/pict3.webp";
@@ -27,24 +27,42 @@ function HomeAdidas({ setCart }: HomeAdidasProps) {
     activeKit,
     activeNumName,
     customNum,
+    customName,
+    selectedPlayer,
     setActiveSize,
     setActiveKit,
     setActiveNumName,
     setCustomNum,
+    setCustomName,
+    setSelectedPlayer,
   } = useAdidas();
 
   // Logika menambahkan produk ke keranjang (cart)
   const addToCart = () => {
+    const cartPlayer =
+      activeNumName === "Player" ? selectedPlayer : "Select Player";
+    const cartCustomNum = activeNumName === "Custom" ? customNum : "";
+    const cartCustomName = activeNumName === "Custom" ? customName : "";
+
     setCart((prevCart) => {
       // Variable mencari item spesifik id sama dalam cart
       const existingItem = prevCart.find(
-        (item) => item.id === adidasProduct.id && item.size === activeSize
+        (item) =>
+          item.id === adidasProduct.id &&
+          item.size === activeSize &&
+          item.player === cartPlayer &&
+          item.customName === cartCustomName &&
+          item.customNum === cartCustomNum,
       );
 
       // Jika ketemu, maka quantitas + 1
       if (existingItem) {
         return prevCart.map((item) =>
-          item.id === adidasProduct.id && item.size === activeSize
+          item.id === adidasProduct.id &&
+          item.size === activeSize &&
+          item.player === cartPlayer &&
+          item.customName === cartCustomName &&
+          item.customNum === cartCustomNum
             ? {
                 ...item,
                 quantity: item.quantity + 1,
@@ -59,6 +77,10 @@ function HomeAdidas({ setCart }: HomeAdidasProps) {
         {
           ...adidasProduct,
           size: activeSize,
+          player: cartPlayer,
+          customName: cartCustomName,
+          customNum: cartCustomNum,
+          price: totalPrice,
           quantity: 1,
         },
       ];
@@ -67,7 +89,11 @@ function HomeAdidas({ setCart }: HomeAdidasProps) {
   };
 
   const basePrice = adidasProduct.price;
-  const additionalPrice = getAdditionalPrice(activeNumName);
+  const additionalPrice = getAdditionalPrice(
+    activeNumName,
+    customNum,
+    customName,
+  );
   const totalPrice = getTotalPrice(basePrice, additionalPrice);
 
   return (
@@ -214,7 +240,12 @@ function HomeAdidas({ setCart }: HomeAdidasProps) {
         </div>
 
         <div>
-          {activeNumName === "Player" && <DropdownA />}
+          {activeNumName === "Player" && (
+            <DropdownA
+              selectedPlayer={selectedPlayer}
+              setSelectedPlayer={setSelectedPlayer}
+            />
+          )}
           {activeNumName === "Custom" && (
             <div className="flex flex-col gap-3">
               <div>
@@ -248,6 +279,10 @@ function HomeAdidas({ setCart }: HomeAdidasProps) {
                   <label>Custom Name + $20 Additional Price</label>
                   <br></br>
                   <input
+                    type="text"
+                    value={customName}
+                    onChange={(e) => setCustomName(e.target.value)}
+                    maxLength={15}
                     placeholder="Input Name"
                     className="bg-gray-200 w-100 px-5 py-3 rounded-xl border border-blue-500 font-medium"
                   />

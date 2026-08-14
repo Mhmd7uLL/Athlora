@@ -1,37 +1,41 @@
 import { useState } from "react";
 import { Info } from "lucide-react";
 
-function DropdownA() {
+interface DropdownPProps {
+  selectedPlayer: string;
+  setSelectedPlayer: React.Dispatch<React.SetStateAction<string>>;
+}
+
+function DropdownP({ selectedPlayer, setSelectedPlayer }: DropdownPProps) {
   const [open, setOpen] = useState(false);
-  const [activePlayers, setActivePlayers] = useState("Select Player");
 
   const players = [
-    "David Raya, 1",
-    "Marc Pubill, 2",
-    "Alex Grimaldo, 3",
-    "Eric Garcia, 4",
-    "Marcos Llorente, 5",
-    "Mikel Merino, 6",
-    "Ferran Torres, 7",
-    "Fabian Ruiz, 8",
-    "Gavi, 9",
-    "Dani Olmo, 10",
-    "Yeremy Pino, 11",
-    "Pedro Porro, 12",
-    "Joan Garcia, 13",
-    "Aymeric Laporte, 14",
-    "Alex Baena, 15",
-    "Rodri, 16",
-    "Nico Williams, 17",
-    "Martin Zubimendi, 18",
-    "Lamine Yamal, 19",
-    "Pedri, 20",
-    "Mikel Oyarzabal, 21",
-    "Pau Cubarsi, 22",
-    "Unai Simon, 23",
-    "Marc Cucurella, 24",
-    "Victor Munoz, 25",
-    "Borja Iglesias, 26",
+    "Diogo Costa, 1",
+    "Nelson Semedo, 2",
+    "Ruben Dias, 3",
+    "Tomas Araujo, 4",
+    "Diogo Dalot, 5",
+    "Matheus Nunes, 6",
+    "Cristiano Ronaldo, 7",
+    "Bruno Fernandes, 8",
+    "Goncalo Ramos, 9",
+    "Bernardo Silva, 10",
+    "Joao Felix, 11",
+    "Jose Sa, 12",
+    "Renato Veiga, 13",
+    "Goncalo Inacio, 14",
+    "Joao Neves, 15",
+    "Fransisco Trincao, 16",
+    "Rafael Leao, 17",
+    "Pedro Neto, 18",
+    "Goncalo Guedes, 19",
+    "Joao Cancelo, 20",
+    "Ruben Neves, 21",
+    "Rui Silva, 22",
+    "Vitinha, 23",
+    "Samu Costa, 24",
+    "Nuno Mendes, 25",
+    "Fransisco Conceicao, 26",
   ];
 
   return (
@@ -40,7 +44,7 @@ function DropdownA() {
         onClick={() => setOpen(!open)}
         className="flex w-full justify-between bg-gray-300 rounded-3xl border border-gray-300 px-4 py-4 hover:border-blue-500"
       >
-        {activePlayers}
+        {selectedPlayer}
         <span>⌄</span>
       </button>
       <div className="flex flex-row gap-3 items-center py-2">
@@ -56,7 +60,7 @@ function DropdownA() {
             <button
               key={player}
               onClick={() => {
-                setActivePlayers(player);
+                setSelectedPlayer(player);
                 setOpen(false);
               }}
               className="block w-full px-4 py-2 text-left hover:bg-gray-100"
@@ -70,4 +74,4 @@ function DropdownA() {
   );
 }
 
-export default DropdownA;
+export default DropdownP;

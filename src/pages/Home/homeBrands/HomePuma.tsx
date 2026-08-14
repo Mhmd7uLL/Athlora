@@ -3,7 +3,7 @@ import { getTotalPrice } from "../../../utils/calculateTotal/calculateTotal";
 import { usePuma } from "../../../hooks/hooksBrand/usePuma";
 import type { CartItem } from "../../../types/cart";
 
-import DropdownP from "../../../components/dropdownPlayer/DropdownPuma/DropdownP";
+import DropdownP from "../../../components/dropdownPlayer/DropdownP";
 import pict1 from "../../../assets/homeAssets/pumaPortugal/pict1.jpg";
 import pict2 from "../../../assets/homeAssets/pumaPortugal/pict2.webp";
 import pict3 from "../../../assets/homeAssets/pumaPortugal/pict3.webp";
@@ -27,22 +27,42 @@ function HomePuma({ setCart }: HomePumaProps) {
     activeKit,
     activeNumName,
     customNum,
+    customName,
+    selectedPlayer,
     setActiveSize,
     setActiveKit,
     setActiveNumName,
     setCustomNum,
+    setCustomName,
+    setSelectedPlayer,
   } = usePuma();
 
   // Logika menambahkan produk ke keranjang (cart)
   const addToCart = () => {
+    const cartPlayer =
+      activeNumName === "Player" ? selectedPlayer : "Select Player";
+    const cartCustomName = activeNumName === "Custom" ? customName : "";
+    const cartCustomNum = activeNumName === "Custom" ? customNum : "";
+
     setCart((prevCart) => {
       // Variable mencari item spesifik id sama dalam cart
-      const existingItem = prevCart.find((item) => item.id === pumaProduct.id && item.size === activeSize);
+      const existingItem = prevCart.find(
+        (item) =>
+          item.id === pumaProduct.id &&
+          item.size === activeSize &&
+          item.player === cartPlayer &&
+          item.customName === cartCustomName &&
+          item.customNum === cartCustomNum,
+      );
 
       // Jika ketemu, maka quantitas + 1
       if (existingItem) {
         return prevCart.map((item) =>
-          item.id === pumaProduct.id && item.size === activeSize
+          item.id === pumaProduct.id &&
+          item.size === activeSize &&
+          item.player === cartPlayer &&
+          item.customName === cartCustomName &&
+          item.customNum === cartCustomNum
             ? {
                 ...item,
                 quantity: item.quantity + 1,
@@ -57,6 +77,10 @@ function HomePuma({ setCart }: HomePumaProps) {
         {
           ...pumaProduct,
           size: activeSize,
+          player: cartPlayer,
+          customName: cartCustomName,
+          customNum: cartCustomNum,
+          price: totalPrice,
           quantity: 1,
         },
       ];
@@ -65,7 +89,11 @@ function HomePuma({ setCart }: HomePumaProps) {
   };
 
   const basePrice = pumaProduct.price;
-  const additionalPrice = getAdditionalPrice(activeNumName);
+  const additionalPrice = getAdditionalPrice(
+    activeNumName,
+    customNum,
+    customName,
+  );
   const totalPrice = getTotalPrice(basePrice, additionalPrice);
 
   return (
@@ -212,7 +240,12 @@ function HomePuma({ setCart }: HomePumaProps) {
         </div>
 
         <div>
-          {activeNumName === "Player" && <DropdownP />}
+          {activeNumName === "Player" && (
+            <DropdownP
+              selectedPlayer={selectedPlayer}
+              setSelectedPlayer={setSelectedPlayer}
+            />
+          )}
           {activeNumName === "Custom" && (
             <div className="flex flex-col gap-3">
               <div>
@@ -246,6 +279,10 @@ function HomePuma({ setCart }: HomePumaProps) {
                   <label>Custom Name + $20 Additional Price</label>
                   <br></br>
                   <input
+                    type="text"
+                    value={customName}
+                    onChange={(e) => setCustomName(e.target.value)}
+                    maxLength={15}
                     placeholder="Input Name"
                     className="bg-gray-200 w-100 px-5 py-3 rounded-xl border border-blue-500 font-medium"
                   />

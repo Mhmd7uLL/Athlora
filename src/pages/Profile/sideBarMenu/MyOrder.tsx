@@ -99,7 +99,7 @@ function MyOrder() {
             </div>
           )}
           {activeTab === "pack" && (
-            <div className="bg-white w-100 px-5 py-3 rounded-lg">
+            <div className="bg-white w-100 px-5 py-3 rounded-lg shadow-xl">
               <div className="flex flex-row justify-between">
                 <h1>All Orders</h1>
                 <h1>Aug 12, 2026</h1>

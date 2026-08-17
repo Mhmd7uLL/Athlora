@@ -1,15 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { Size } from "../../types/cart";
 import type { NumNameOption } from "../../utils/additionalPrice/additionalPrice";
 import pict1 from "../../assets/homeAssets/adidasEspana/pict1.webp";
 
 export function useAdidas() {
-  const [activeSize, setActiveSize] = useState<Size>("XS");
   const [activeKit, setActiveKit] = useState(pict1);
+
+  const [selectedPlayer, setSelectedPlayer] = useState("Select Player");
+
+  const [activeSize, setActiveSize] = useState<Size>("XS");
   const [customNum, setCustomNum] = useState<number | "">("");
   const [activeNumName, setActiveNumName] = useState<NumNameOption>("None");
-  const [selectedPlayer, setSelectedPlayer] = useState("Select Player");
   const [customName, setCustomName] = useState("");
+  
+  const [showNotif, setShowNotif] = useState(false);
+  const [showFailNotif, setShowFailNotif] = useState(false);
+
+  useEffect(() => {
+    if (!showNotif && !showFailNotif) return;
+
+    const timer = setTimeout(() => {
+      setShowNotif(false);
+      setShowFailNotif(false);
+    }, 3500);
+
+    return () => clearTimeout(timer);
+  }, [showNotif, showFailNotif])
 
   return {
     activeSize,
@@ -18,11 +34,16 @@ export function useAdidas() {
     customNum,
     customName,
     selectedPlayer,
+    showNotif,
+    showFailNotif,
+
     setActiveSize,
     setActiveKit,
     setActiveNumName,
     setCustomNum,
     setCustomName,
     setSelectedPlayer,
+    setShowNotif,
+    setShowFailNotif,
   };
 }

@@ -3,7 +3,10 @@ import { getTotalPrice } from "../../../utils/calculateTotal/calculateTotal";
 import { useAdidas } from "../../../hooks/hooksBrand/useAdidas";
 import type { CartItem } from "../../../types/cart";
 
+import AddProdStatus from "../../../components/addProdStatus/success/AddProdStatus";
+import FailProdStatus from "../../../components/addProdStatus/failed/FailProdStatus";
 import DropdownA from "../../../components/dropdownPlayer/DropdownA";
+
 import pict1 from "../../../assets/homeAssets/adidasEspana/pict1.webp";
 import pict2 from "../../../assets/homeAssets/adidasEspana/pict2.webp";
 import pict3 from "../../../assets/homeAssets/adidasEspana/pict3.webp";
@@ -15,6 +18,8 @@ type HomeAdidasProps = {
 };
 
 function HomeAdidas({ setCart }: HomeAdidasProps) {
+
+  // Dummy Product Adidas
   const adidasProduct = {
     id: "adidas-1",
     name: "Adidas Apparel Spanish Home Kit World Cup 2026",
@@ -22,6 +27,7 @@ function HomeAdidas({ setCart }: HomeAdidasProps) {
     price: 270,
   };
 
+  // Import state variable dari useAdidas.ts
   const {
     activeSize,
     activeKit,
@@ -29,12 +35,16 @@ function HomeAdidas({ setCart }: HomeAdidasProps) {
     customNum,
     customName,
     selectedPlayer,
+    showNotif,
+    showFailNotif,
     setActiveSize,
     setActiveKit,
     setActiveNumName,
     setCustomNum,
     setCustomName,
     setSelectedPlayer,
+    setShowNotif,
+    setShowFailNotif,
   } = useAdidas();
 
   // Logika menambahkan produk ke keranjang (cart)
@@ -45,7 +55,7 @@ function HomeAdidas({ setCart }: HomeAdidasProps) {
     const cartCustomName = activeNumName === "Custom" ? customName : "";
 
     setCart((prevCart) => {
-      // Variable mencari item spesifik id sama dalam cart
+      // Variable mencari item spesifik id, size, namaPlayer, namaCustom & nomorCustom yang identik
       const existingItem = prevCart.find(
         (item) =>
           item.id === adidasProduct.id &&
@@ -85,7 +95,6 @@ function HomeAdidas({ setCart }: HomeAdidasProps) {
         },
       ];
     });
-    alert("Produk ditambahkan");
   };
 
   const basePrice = adidasProduct.price;
@@ -298,13 +307,41 @@ function HomeAdidas({ setCart }: HomeAdidasProps) {
             <h1>$ {totalPrice}</h1>
           </div>
           <button
-            onClick={addToCart}
+            onClick={() => {
+              // Logic notif gagal ketika pemilihan player masih berupa string base 
+              if (
+                activeNumName === "Player" &&
+                selectedPlayer === "Select Player"
+              ) {
+                setShowFailNotif(true);
+                return;
+              }
+
+              // Logic notif gagal ketika custom nama & nomor masih berupa string base 
+              if (
+                activeNumName === "Custom" &&
+                (!customName || customNum === "")
+              ) {
+                setShowFailNotif(true);
+                return;
+              }
+              
+              // Jika tidak memenuhi antara 2 kondisi di atas, maka logic addToCart & notif Sukses dijalankan
+              addToCart();
+              setShowNotif(true);
+            }}
             className="flex justify-center items-center mt-5 bg-blue-500 text-white h-15 w-full rounded-2xl transition duration-300 hover:cursor-pointer hover:bg-blue-950"
           >
             Add to cart
           </button>
         </div>
       </div>
+
+      {/* Active state buat munculin notif gagal dan notif sukses  */}
+      {showNotif && <AddProdStatus onClose={() => setShowNotif(false)} />}
+      {showFailNotif && (
+        <FailProdStatus onClose={() => setShowFailNotif(false)} />
+      )}
     </div>
   );
 }

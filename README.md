@@ -3,11 +3,13 @@
 Athlora (Athletic Lifestyle and Original Apparel) yaitu sistem penjualan suatu brand Apparel yang berfokus pada jersey tim bola (Edisi Klub maupun Tim negara)
 
 ## Fitur utama
-- Aktivitas add-to-cart jersey 3 brand (Adidas Spain, Nike Brazil, Puma Portugal) secara langsung di Home Page bawah
-- Tombol interaktif pemilihan produk populer (FC & WC), 3 Brand (Adidas, Nike, Puma), Ukuran tiap jersey (XS - XL), Style untuk jersey (Polos, Original Replica Players Name & Custom Name Number)
-- Notifikasi interaktif setelah sistem add-to-cart (Success & Failed)
-- Tombol kuantitas (plus minus) di cart untuk menambah dan mengurangi kuantitas (jika mengurangi < 0, maka produk terhapus)
-- Total harga yang berubah sehubungan style jersey (point 2) maupun dengan jumlah kuantitas
+1. Home Features
+   - Aktivitas add-to-cart jersey 3 brand (Adidas Spain, Nike Brazil, Puma Portugal) secara langsung di Home Page bawah
+   - Tombol interaktif pemilihan produk populer (FC & WC), 3 Brand (Adidas, Nike, Puma), Ukuran tiap jersey (XS - XL), Style untuk jersey (Polos, Original Replica Players Name & Custom Name Number)
+   - Notifikasi interaktif setelah sistem add-to-cart (Success & Failed)
+2. Cart Features
+   - Tombol kuantitas (plus minus) di cart untuk menambah dan mengurangi kuantitas (jika mengurangi < 0, maka produk terhapus)
+   - Total harga yang berubah sehubungan style jersey (point 2) maupun dengan jumlah kuantitas
 
 ## Teknologi
 - Bahasa: TypeScript

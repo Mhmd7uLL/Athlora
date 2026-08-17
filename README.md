@@ -1,19 +1,20 @@
 # Athlora
 
-Athlora (Athletic Lifestyle and Original Apparel) adalah toko pakaian olahraga modern yang menjual jersey tim sepak bola
+Athlora (Athletic Lifestyle and Original Apparel) yaitu sistem penjualan suatu brand Apparel yang berfokus pada jersey tim bola (Edisi Klub maupun Tim negara)
 
 ## Fitur utama
-- Pengenalan produk: Jersey tim sepak bola (saat ini)
-- Halaman beranda dengan banner promosi dan pengelompokan produk.
-- Komponen UI terpisah (navbar, kategori, halaman) untuk pengembangan lebih lanjut.
-- Pengaturan build dan dev standar dengan Vite + TypeScript + Tailwind CSS.
+- Aktivitas add-to-cart jersey 3 brand (Adidas Spain, Nike Brazil, Puma Portugal) secara langsung di Home Page bawah
+- Tombol interaktif pemilihan produk populer (FC & WC), 3 Brand (Adidas, Nike, Puma), Ukuran tiap jersey (XS - XL), Style untuk jersey (Polos, Original Replica Players Name & Custom Name Number)
+- Notifikasi interaktif setelah sistem add-to-cart (Success & Failed)
+- Tombol kuantitas (plus minus) di cart untuk menambah dan mengurangi kuantitas (jika mengurangi < 0, maka produk terhapus)
+- Total harga yang berubah sehubungan style jersey (point 2) maupun dengan jumlah kuantitas
 
 ## Teknologi
 - Bahasa: TypeScript
 - Build / Dev: Vite
 - Routing: react-router-dom
-- Front-End: React.Js, Tailwind CSS
-- Back-End : Node, Express
+- Front-End: React, Tailwind CSS
+- Back-End : Node, Express (To Be Processed)
 
 ## Struktur proyek (ringkasan)
 ```
@@ -27,7 +28,7 @@ Athlora (Athletic Lifestyle and Original Apparel) adalah toko pakaian olahraga m
 │  |  ├─ pages/                  # halaman untuk web (Home, Cart, Products, dsb)
 │  |  ├─ types/                  # definisi tipe data
 │  |  ├─ utils/                  # fungsi bantuan (total, dsb)
-│  |  ├─ App.css                 # style utama (termasuk import Tailwind CSS)
+│  |  ├─ App.css                 # style utama mengcover semua file tsx (termasuk import Tailwind CSS)
 │  |  ├─ App.tsx                 # root app (routing, layout)
 │  |  └─ main.tsx                # entry point
 |  |

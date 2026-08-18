@@ -18,7 +18,7 @@ Athlora (Athletic Lifestyle and Original Apparel) yaitu sistem penjualan suatu b
 - Front-End: React, Tailwind CSS
 - Back-End : Node, Express (To Be Processed)
 
-## Struktur proyek (ringkasan)
+## Struktur proyek 
 ```
 ├─ Backend/
 ├─ Frontend/

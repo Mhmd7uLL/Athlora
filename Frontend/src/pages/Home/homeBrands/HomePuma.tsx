@@ -1,9 +1,12 @@
-import { getAdditionalPrice } from "../../../utils/additionalPrice/additionalPrice";
-import { getTotalPrice } from "../../../utils/calculateTotal/calculateTotal";
+import { getAdditionalPrice } from "../../../utils/additionalPrice";
+import { getTotalPrice } from "../../../utils/calculateTotal";
 import { usePuma } from "../../../hooks/hooksBrand/usePuma";
 import type { CartItem } from "../../../types/cart";
 
+import SuccessProdStatus from "../../../components/notification/success/SucceedProdStatus";
+import FailProdStatus from "../../../components/notification/failed/FailProdStatus";
 import DropdownP from "../../../components/dropdownPlayer/DropdownP";
+
 import pict1 from "../../../assets/homeAssets/pumaPortugal/pict1.jpg";
 import pict2 from "../../../assets/homeAssets/pumaPortugal/pict2.webp";
 import pict3 from "../../../assets/homeAssets/pumaPortugal/pict3.webp";
@@ -15,6 +18,8 @@ type HomePumaProps = {
 };
 
 function HomePuma({ setCart }: HomePumaProps) {
+  
+  // Dummy Product Puma
   const pumaProduct = {
     id: "puma-1",
     name: "Puma Apparel Portugal Home Kit World Cup 2026",
@@ -22,6 +27,7 @@ function HomePuma({ setCart }: HomePumaProps) {
     price: 265,
   };
 
+  // Import state variable dari usePuma.ts
   const {
     activeSize,
     activeKit,
@@ -29,12 +35,16 @@ function HomePuma({ setCart }: HomePumaProps) {
     customNum,
     customName,
     selectedPlayer,
+    showNotif,
+    showFailNotif,
     setActiveSize,
     setActiveKit,
     setActiveNumName,
     setCustomNum,
     setCustomName,
     setSelectedPlayer,
+    setShowNotif,
+    setShowFailNotif,
   } = usePuma();
 
   // Logika menambahkan produk ke keranjang (cart)
@@ -85,7 +95,6 @@ function HomePuma({ setCart }: HomePumaProps) {
         },
       ];
     });
-    alert("Produk ditambahkan");
   };
 
   const basePrice = pumaProduct.price;
@@ -298,13 +307,41 @@ function HomePuma({ setCart }: HomePumaProps) {
             <h1>$ {totalPrice}</h1>
           </div>
           <button
-            onClick={addToCart}
+            onClick={() => {
+              // Logic notif gagal ketika pemilihan player masih berupa string base 
+              if (
+                activeNumName === "Player" &&
+                selectedPlayer === "Select Player"
+              ) {
+                setShowFailNotif(true);
+                return;
+              }
+
+              // Logic notif gagal ketika custom nama & nomor masih berupa string base 
+              if (
+                activeNumName === "Custom" &&
+                (!customName || customNum === "")
+              ) {
+                setShowFailNotif(true);
+                return;
+              }
+              
+              // Jika tidak memenuhi antara 2 kondisi di atas, maka logic addToCart & notif Sukses dijalankan
+              addToCart();
+              setShowNotif(true);
+            }}
             className="flex justify-center items-center mt-5 bg-blue-500 text-white h-15 w-full rounded-2xl transition duration-300 hover:cursor-pointer hover:bg-blue-950"
           >
             Add to cart
           </button>
         </div>
       </div>
+
+      {/* Active state buat munculin notif gagal dan notif sukses  */}
+      {showNotif && <SuccessProdStatus onClose={() => setShowNotif(false)} />}
+      {showFailNotif && (
+        <FailProdStatus onClose={() => setShowFailNotif(false)} />
+      )}
     </div>
   );
 }

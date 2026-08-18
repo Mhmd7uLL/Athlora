@@ -1,6 +1,6 @@
 import { useProfile } from "../../hooks/useProfile";
 
-import Categories from "../../components/categories/Categories";
+import Categories from "../../components/Categories";
 import Dashboard from "./sideBarMenu/Dashboard";
 import Order from "./sideBarMenu/MyOrder";
 import Wishlist from "./sideBarMenu/Wishlist";

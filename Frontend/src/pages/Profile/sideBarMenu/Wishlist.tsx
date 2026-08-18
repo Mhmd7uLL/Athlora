@@ -16,9 +16,12 @@ function Wishlist() {
             <div className="text-sm">
               <h1 className="my-2">Nike Brazil Home Kit World Cup 2026</h1>
               <h1 className="mt-3 font-bold text-md mb-1">$ 250</h1>
-              <button className="bg-blue-500 px-3 py-2 rounded-lg text-white hover:bg-blue-950 hover:cursor-pointer transition duration-300">
-                Add to cart
-              </button>
+              <div className="flex flex-row justify-between">
+                <button className="bg-blue-500 px-3 py-2 rounded-lg text-white hover:bg-blue-950 hover:cursor-pointer transition duration-300">
+                  Add to cart
+                </button>
+                <button className="font-bold hover:text-red-500">X</button>
+              </div>
             </div>
           </div>
           <div className="bg-white rounded-lg p-3 shadow-xl">
@@ -26,9 +29,12 @@ function Wishlist() {
             <div className="text-sm">
               <h1 className="my-2">Puma Portugal Home Kit World Cup 2026</h1>
               <h1 className="mt-3 font-bold text-md mb-1">$ 265</h1>
-              <button className="bg-blue-500 px-3 py-2 rounded-lg text-white hover:bg-blue-950 hover:cursor-pointer transition duration-300">
-                Add to cart
-              </button>
+              <div className="flex flex-row justify-between">
+                <button className="bg-blue-500 px-3 py-2 rounded-lg text-white hover:bg-blue-950 hover:cursor-pointer transition duration-300">
+                  Add to cart
+                </button>
+                <button className="font-bold hover:text-red-500">X</button>
+              </div>
             </div>
           </div>
         </div>

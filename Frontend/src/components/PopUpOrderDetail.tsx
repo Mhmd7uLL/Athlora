@@ -1,4 +1,4 @@
-import pict from "../../assets/homeAssets/adidasEspana/pict1.webp";
+import pict from "../assets/homeAssets/adidasEspana/pict1.webp";
 
 interface PopUpOrderDetailProps {
   onClose: () => void;

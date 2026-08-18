@@ -1,10 +1,10 @@
-import { getAdditionalPrice } from "../../../utils/additionalPrice/additionalPrice";
-import { getTotalPrice } from "../../../utils/calculateTotal/calculateTotal";
+import { getAdditionalPrice } from "../../../utils/additionalPrice";
+import { getTotalPrice } from "../../../utils/calculateTotal";
 import { useAdidas } from "../../../hooks/hooksBrand/useAdidas";
 import type { CartItem } from "../../../types/cart";
 
-import AddProdStatus from "../../../components/addProdStatus/success/AddProdStatus";
-import FailProdStatus from "../../../components/addProdStatus/failed/FailProdStatus";
+import SuccessProdStatus from "../../../components/notification/success/SucceedProdStatus";
+import FailProdStatus from "../../../components/notification/failed/FailProdStatus";
 import DropdownA from "../../../components/dropdownPlayer/DropdownA";
 
 import pict1 from "../../../assets/homeAssets/adidasEspana/pict1.webp";
@@ -18,7 +18,6 @@ type HomeAdidasProps = {
 };
 
 function HomeAdidas({ setCart }: HomeAdidasProps) {
-
   // Dummy Product Adidas
   const adidasProduct = {
     id: "adidas-1",
@@ -308,7 +307,7 @@ function HomeAdidas({ setCart }: HomeAdidasProps) {
           </div>
           <button
             onClick={() => {
-              // Logic notif gagal ketika pemilihan player masih berupa string base 
+              // Logic notif gagal ketika pemilihan player masih berupa string base
               if (
                 activeNumName === "Player" &&
                 selectedPlayer === "Select Player"
@@ -317,7 +316,7 @@ function HomeAdidas({ setCart }: HomeAdidasProps) {
                 return;
               }
 
-              // Logic notif gagal ketika custom nama & nomor masih berupa string base 
+              // Logic notif gagal ketika custom nama & nomor masih berupa string base
               if (
                 activeNumName === "Custom" &&
                 (!customName || customNum === "")
@@ -325,7 +324,7 @@ function HomeAdidas({ setCart }: HomeAdidasProps) {
                 setShowFailNotif(true);
                 return;
               }
-              
+
               // Jika tidak memenuhi antara 2 kondisi di atas, maka logic addToCart & notif Sukses dijalankan
               addToCart();
               setShowNotif(true);
@@ -338,7 +337,7 @@ function HomeAdidas({ setCart }: HomeAdidasProps) {
       </div>
 
       {/* Active state buat munculin notif gagal dan notif sukses  */}
-      {showNotif && <AddProdStatus onClose={() => setShowNotif(false)} />}
+      {showNotif && <SuccessProdStatus onClose={() => setShowNotif(false)} />}
       {showFailNotif && (
         <FailProdStatus onClose={() => setShowFailNotif(false)} />
       )}

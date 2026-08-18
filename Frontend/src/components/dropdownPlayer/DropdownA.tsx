@@ -42,10 +42,10 @@ function DropdownA({ selectedPlayer, setSelectedPlayer }: DropdownAProps) {
     <div className="mt-5 relative">
       <button
         onClick={() => setOpen(!open)}
-        className="flex w-full justify-between bg-gray-300 rounded-3xl border border-gray-300 px-4 py-4 hover:border-blue-500"
+        className="flex w-full justify-between shadow-sm bg-gray-200 rounded-3xl border border-gray-200 px-4 py-4 hover:border-blue-500"
       >
         {selectedPlayer}
-        <span>⌄</span>
+        <span>v</span>
       </button>
       <div className="flex flex-row gap-3 items-center py-2">
         <Info size={20} className="text-blue-500"></Info>
@@ -55,7 +55,7 @@ function DropdownA({ selectedPlayer, setSelectedPlayer }: DropdownAProps) {
       </div>
 
       {open && (
-        <div className="absolute z-10 mt-2 w-full rounded border bg-white shadow">
+        <div className="absolute z-10 mt-2 max-h-55 overflow-y-auto w-full rounded-xl border border-blue-500 shadow-2xl bg-white py-2">
           {players.map((player) => (
             <button
               key={player}

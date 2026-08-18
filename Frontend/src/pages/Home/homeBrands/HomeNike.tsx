@@ -1,9 +1,12 @@
-import { getAdditionalPrice } from "../../../utils/additionalPrice/additionalPrice";
-import { getTotalPrice } from "../../../utils/calculateTotal/calculateTotal";
+import { getAdditionalPrice } from "../../../utils/additionalPrice";
+import { getTotalPrice } from "../../../utils/calculateTotal";
 import { useNike } from "../../../hooks/hooksBrand/useNike";
 import type { CartItem } from "../../../types/cart";
 
+import SuccessProdStatus from "../../../components/notification/success/SucceedProdStatus";
+import FailProdStatus from "../../../components/notification/failed/FailProdStatus";
 import DropdownN from "../../../components/dropdownPlayer/DropdownN";
+
 import pict1 from "../../../assets/homeAssets/nikeBrazil/pict1.webp";
 import pict2 from "../../../assets/homeAssets/nikeBrazil/pict2.webp";
 import pict3 from "../../../assets/homeAssets/nikeBrazil/pict3.webp";
@@ -15,6 +18,7 @@ type HomeNikeProps = {
 };
 
 function HomeNike({ setCart }: HomeNikeProps) {
+  // Dummy Product Nike
   const nikeProduct = {
     id: "nike-1",
     name: "Nike Apparel Brazil World Cup Home Kit 2026",
@@ -22,6 +26,7 @@ function HomeNike({ setCart }: HomeNikeProps) {
     price: 250,
   };
 
+  // import state variable dari useNike.ts
   const {
     activeSize,
     activeKit,
@@ -29,12 +34,16 @@ function HomeNike({ setCart }: HomeNikeProps) {
     customNum,
     customName,
     selectedPlayer,
+    showNotif,
+    showFailNotif,
     setActiveSize,
     setActiveKit,
     setActiveNumName,
     setCustomNum,
     setCustomName,
     setSelectedPlayer,
+    setShowNotif,
+    setShowFailNotif,
   } = useNike();
 
   // Logika menambahkan produk ke keranjang (cart)
@@ -47,10 +56,10 @@ function HomeNike({ setCart }: HomeNikeProps) {
     setCart((prevCart) => {
       // Variable mencari item spesifik id sama dalam cart
       const existingItem = prevCart.find(
-        (item) => 
-          item.id === nikeProduct.id && 
-          item.size === activeSize && 
-          item.player === cartPlayer && 
+        (item) =>
+          item.id === nikeProduct.id &&
+          item.size === activeSize &&
+          item.player === cartPlayer &&
           item.customName === cartCustomName &&
           item.customNum === cartCustomNum,
       );
@@ -58,9 +67,9 @@ function HomeNike({ setCart }: HomeNikeProps) {
       // Jika ketemu, maka quantitas + 1
       if (existingItem) {
         return prevCart.map((item) =>
-          item.id === nikeProduct.id && 
+          item.id === nikeProduct.id &&
           item.size === activeSize &&
-          item.player === cartPlayer && 
+          item.player === cartPlayer &&
           item.customName === cartCustomName &&
           item.customNum === cartCustomNum
             ? {
@@ -85,7 +94,6 @@ function HomeNike({ setCart }: HomeNikeProps) {
         },
       ];
     });
-    alert("Produk ditambahkan");
   };
 
   const basePrice = nikeProduct.price;
@@ -240,7 +248,12 @@ function HomeNike({ setCart }: HomeNikeProps) {
         </div>
 
         <div>
-          {activeNumName === "Player" && <DropdownN selectedPlayer={selectedPlayer} setSelectedPlayer={setSelectedPlayer} />}
+          {activeNumName === "Player" && (
+            <DropdownN
+              selectedPlayer={selectedPlayer}
+              setSelectedPlayer={setSelectedPlayer}
+            />
+          )}
           {activeNumName === "Custom" && (
             <div className="flex flex-col gap-3">
               <div>
@@ -293,13 +306,41 @@ function HomeNike({ setCart }: HomeNikeProps) {
             <h1>$ {totalPrice}</h1>
           </div>
           <button
-            onClick={addToCart}
+            onClick={() => {
+              // Logic notif gagal ketika pemilihan player masih berupa string base
+              if (
+                activeNumName === "Player" &&
+                selectedPlayer === "Select Player"
+              ) {
+                setShowFailNotif(true);
+                return;
+              }
+
+              // Logic notif gagal ketika custom nama & nomor masih berupa string base
+              if (
+                activeNumName === "Custom" &&
+                (!customName || customNum === "")
+              ) {
+                setShowFailNotif(true);
+                return;
+              }
+
+              // Jika tidak memenuhi antara 2 kondisi di atas, maka logic addToCart & notif Sukses dijalankan
+              addToCart();
+              setShowNotif(true);
+            }}
             className="flex justify-center items-center mt-5 bg-blue-500 text-white h-15 w-full rounded-2xl transition duration-300 hover:cursor-pointer hover:bg-blue-950"
           >
             Add to cart
           </button>
         </div>
       </div>
+
+      {/* Active state buat munculin notif gagal dan notif sukses  */}
+      {showNotif && <SuccessProdStatus onClose={() => setShowNotif(false)} />}
+      {showFailNotif && (
+        <FailProdStatus onClose={() => setShowFailNotif(false)} />
+      )}
     </div>
   );
 }

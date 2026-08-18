@@ -1,6 +1,6 @@
 import { useState } from "react";
 import pict from "../../../assets/homeAssets/adidasEspana/pict1.webp";
-import PopUpOrderDetail from "../../../components/popUpOrderDetail/PopUpOrderDetail";
+import PopUpOrderDetail from "../../../components/PopUpOrderDetail";
 
 function MyOrder() {
   const [activeTab, setActiveTab] = useState("all");

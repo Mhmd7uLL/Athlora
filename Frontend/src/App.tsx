@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import type { CartItem } from "./types/cart.ts"
 import "./App.css";
-import Navbar from "./components/navbar/Navbar.tsx";
-import Footer from "./components/footer/footer.tsx";
+import Navbar from "./components/Navbar.tsx";
+import Footer from "./components/footer.tsx";
 
 import Home from "./pages/Home/Home.tsx";
 import Cart from "./pages/Cart/Cart.tsx";

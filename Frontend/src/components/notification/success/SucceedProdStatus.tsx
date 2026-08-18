@@ -2,7 +2,7 @@ interface AddProdStatusProps {
     onClose: () => void;
 }
 
-function AddProdStatus({ onClose }:AddProdStatusProps) {
+function SucceedProdStatus({ onClose }:AddProdStatusProps) {
   return (
     <div className="fixed bottom-5 right-5 z-[9999]">
       <div className="animate-slide-in flex justify-around gap-3 rounded-xl bg-green-500 w-90 py-4 shadow-xl text-white">
@@ -19,4 +19,4 @@ function AddProdStatus({ onClose }:AddProdStatusProps) {
   );
 }
 
-export default AddProdStatus;
+export default SucceedProdStatus;

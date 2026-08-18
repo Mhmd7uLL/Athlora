@@ -1,7 +1,7 @@
 import { useHome } from "../../hooks/useHome";
 import type { CartItem } from "../../types/cart";
 
-import Categories from "../../components/categories/Categories";
+import Categories from "../../components/Categories";
 import HomeAdidas from "./homeBrands/HomeAdidas";
 import HomeNike from "./homeBrands/HomeNike";
 import HomePuma from "./homeBrands/HomePuma";
@@ -19,7 +19,6 @@ function Home({ setCart }: HomeProps) {
   return (
     <div>
       <Categories />
-
       <div className="h-120 bg-blue-950 mt-1">
         <div
           className="w-full h-120 flex justify-end items-center bg-contain bg-center bg-no-repeat"

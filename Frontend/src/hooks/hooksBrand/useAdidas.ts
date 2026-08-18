@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import type { Size } from "../../types/cart";
-import type { NumNameOption } from "../../utils/additionalPrice/additionalPrice";
+import type { NumNameOption } from "../../utils/additionalPrice";
 import pict1 from "../../assets/homeAssets/adidasEspana/pict1.webp";
 
 export function useAdidas() {

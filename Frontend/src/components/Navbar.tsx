@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
-import cart from "../../assets/navAssets/cart.svg";
-import profile from "../../assets/navAssets/profile.svg";
+import Bahasa from "./Bahasa";
+import cart from "../assets/navAssets/cart.svg";
+import profile from "../assets/navAssets/profile.svg";
 
 function Navbar() {
+  const [showLang, setShowLang] = useState(false);
+
   return (
     <nav className="w-full h-30 bg-white">
       <div className="h-full grid grid-cols-3 items-center px-20">
@@ -23,7 +27,7 @@ function Navbar() {
           />
         </form>
         <div className="flex justify-end gap-5">
-          <span>USD | EN</span>
+          <button onClick={() => setShowLang(!showLang)}>USD | EN</button>
           <Link to="/profile">
             <img src={profile} className="w-6 h-6"></img>
           </Link>
@@ -32,6 +36,7 @@ function Navbar() {
           </Link>
         </div>
       </div>
+      {showLang && <Bahasa onClose={() => setShowLang(false)} />}
     </nav>
   );
 }
